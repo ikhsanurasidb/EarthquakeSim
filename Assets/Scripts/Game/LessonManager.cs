@@ -22,13 +22,12 @@ namespace GazeVR
     /// <see cref="GazeInteractable.CategoryId"/>, and tracks how many unique categories
     /// the student has discovered.
     ///
-    /// <para>After all tracked categories are found the earthquake drill starts
-    /// automatically (after <see cref="autoStartDrillDelay"/> seconds). Once the shake
-    /// ends the lesson moves to the Summary phase and broadcasts
-    /// <see cref="onGameFinished"/> with the final score.</para>
+    /// <para>The earthquake drill starts automatically after <see cref="explorationDuration"/>
+    /// seconds (default 60 s) regardless of how many items the student has found.
+    /// <see cref="onAllItemsFound"/> still fires as a milestone when every tracked
+    /// category is discovered, but it no longer triggers the drill.</para>
     ///
-    /// <para>Score formula: 80 % from category discoveries + 20 % for taking cover
-    /// (points split evenly across categories for the item portion).</para>
+    /// <para>Score formula: 80 % from category discoveries + 20 % for taking cover.</para>
     /// </summary>
     public class LessonManager : MonoBehaviour
     {
@@ -43,9 +42,10 @@ namespace GazeVR
         [Tooltip("Automatically register every GazeInteractable in the scene on Awake.")]
         public bool autoRegisterSceneItems = true;
 
-        [Header("Earthquake Drill")]
-        [Tooltip("Seconds after all categories are found before the drill starts. 0 = manual only.")]
-        public float autoStartDrillDelay = 3f;
+        [Header("Exploration Timer")]
+        [Tooltip("Seconds of free exploration before the earthquake drill starts automatically.\n" +
+                 "Set to 0 to disable the timer (manual trigger only).")]
+        public float explorationDuration = 60f;
 
         [Header("Events")]
         [Tooltip("Fired every time any item is selected (including repeats).")]
@@ -119,9 +119,18 @@ namespace GazeVR
             _totalTrackedCategories = tracked.Count;
         }
 
+        /// <summary>Seconds remaining in the exploration phase (counts down from explorationDuration).</summary>
+        public float TimeRemaining { get; private set; }
+
         void Start()
         {
             onProgress.Invoke(FoundCategories, TotalCategories);
+
+            if (explorationDuration > 0f)
+            {
+                TimeRemaining = explorationDuration;
+                StartCoroutine(ExplorationTimer());
+            }
         }
 
         void OnDestroy()
@@ -217,19 +226,21 @@ namespace GazeVR
                 {
                     onProgress.Invoke(FoundCategories, TotalCategories);
 
+                    // Fire the milestone event for HUD feedback, but the drill is
+                    // triggered solely by the exploration timer, not by discovery count.
                     if (_totalTrackedCategories > 0 && FoundCategories >= _totalTrackedCategories)
-                    {
                         onAllItemsFound.Invoke();
-                        if (autoStartDrillDelay > 0f)
-                            StartCoroutine(DelayedDrillStart(autoStartDrillDelay));
-                    }
                 }
             }
         }
 
-        IEnumerator DelayedDrillStart(float delay)
+        IEnumerator ExplorationTimer()
         {
-            yield return new WaitForSecondsRealtime(delay);
+            while (TimeRemaining > 0f)
+            {
+                yield return null;  // wait one frame
+                TimeRemaining = Mathf.Max(0f, TimeRemaining - Time.unscaledDeltaTime);
+            }
             StartEarthquakeDrill();
         }
 
