@@ -59,6 +59,8 @@ namespace GazeVR.EditorTools
             cam.parent.gameObject.AddComponent<EarthquakeShaker>();
             HazardPopup popup = BuildPopup(cam);
             BuildHud(cam);
+            BuildSummaryPanel(cam, lesson);
+            BuildStartupMenu(cam, lesson);
 
             int totalSeats = BuildClassroomAndCharacters(out int presentStudents);
             attendance.present = presentStudents;
@@ -271,6 +273,246 @@ namespace GazeVR.EditorTools
             hud.drillWarningPanel = drillPanel;
             hud.drillWarningText = drillText;
             drillPanel.SetActive(false);
+
+            // Cover prompt (shown during earthquake).
+            var coverPanel = UINode("CoverPromptPanel", go.transform);
+            Anchor(coverPanel, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+                   new Vector2(950, 170), new Vector2(0, -100));
+            coverPanel.AddComponent<Image>().color = new Color(0.15f, 0.15f, 0.70f, 0.95f);
+            var coverText = UIText("CoverPromptText", coverPanel.transform,
+                                   38, TextAnchor.MiddleCenter, Color.white);
+            Stretch(coverText.gameObject, 20, 20, 10, 10);
+            coverText.fontStyle = FontStyle.Bold;
+            AddOutline(coverText.gameObject);
+
+            hud.coverPromptPanel = coverPanel;
+            hud.coverPromptText = coverText;
+            coverPanel.SetActive(false);
+
+            // Evacuation prompt (shown after earthquake ends).
+            var evacPanel = UINode("EvacuationPromptPanel", go.transform);
+            Anchor(evacPanel, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+                   new Vector2(950, 170), new Vector2(0, 20));
+            evacPanel.AddComponent<Image>().color = new Color(0.10f, 0.40f, 0.15f, 0.97f);
+            var evacText = UIText("EvacuationPromptText", evacPanel.transform,
+                                  38, TextAnchor.MiddleCenter, Color.white);
+            Stretch(evacText.gameObject, 20, 20, 10, 10);
+            evacText.fontStyle = FontStyle.Bold;
+            AddOutline(evacText.gameObject);
+
+            hud.evacuationPromptPanel = evacPanel;
+            hud.evacuationPromptText = evacText;
+            evacPanel.SetActive(false);
+        }
+
+        // ---------------------------------------------------------------- Summary panel
+
+        static void BuildSummaryPanel(Transform cam, LessonManager lesson)
+        {
+            // World-space canvas for the end-of-drill summary.
+            var go = new GameObject("SummaryPanel", typeof(Canvas), typeof(CanvasScaler));
+            var canvas = go.GetComponent<Canvas>();
+            canvas.renderMode = RenderMode.WorldSpace;
+            var rt = (RectTransform)go.transform;
+            rt.sizeDelta = new Vector2(900, 700);
+            go.transform.localScale = Vector3.one * 0.0019f;
+            go.transform.position = cam.position + new Vector3(0, 0, 2.5f);
+
+            var summary = go.AddComponent<SummaryPanel>();
+            summary.distance = 2.5f;
+
+            // Dark background panel.
+            var panel = UINode("Panel", go.transform);
+            Stretch(panel);
+            panel.AddComponent<Image>().color = new Color(0.08f, 0.09f, 0.12f, 0.97f);
+            panel.SetActive(false);
+
+            // Title.
+            var titleText = UIText("TitleText", panel.transform, 54, TextAnchor.UpperCenter, Color.white);
+            Anchor(titleText.gameObject, new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, 70), new Vector2(0, -44));
+            titleText.fontStyle = FontStyle.Bold;
+
+            // Score row.
+            var scoreText = UIText("ScoreText", panel.transform, 34, TextAnchor.UpperLeft,
+                                   new Color(0.95f, 0.95f, 0.95f));
+            Anchor(scoreText.gameObject, new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, 100), new Vector2(28, -120));
+            scoreText.supportRichText = true;
+
+            // Scrollable item list.
+            var itemText = UIText("ItemListText", panel.transform, 26, TextAnchor.UpperLeft,
+                                  new Color(0.92f, 0.92f, 0.92f));
+            Anchor(itemText.gameObject, new Vector2(0, 0), new Vector2(1, 1),
+                   new Vector2(-56, -350), new Vector2(28, -230));
+            itemText.supportRichText = true;
+            itemText.verticalOverflow = VerticalWrapMode.Overflow;
+
+            // Replay / achievement line.
+            var replayText = UIText("ReplayText", panel.transform, 30, TextAnchor.LowerCenter,
+                                    new Color(0.85f, 0.85f, 0.85f));
+            Anchor(replayText.gameObject, new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 54), new Vector2(0, 72));
+            replayText.supportRichText = true;
+
+            summary.panel = panel;
+            summary.titleText = titleText;
+            summary.scoreText = scoreText;
+            summary.itemListText = itemText;
+            summary.replayText = replayText;
+
+            // Play Again button — a child canvas element with BoxCollider + GazeInteractable.
+            var btnGo = UINode("PlayAgainButton", panel.transform);
+            Anchor(btnGo, new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(540, 66), new Vector2(0, 18));
+            btnGo.AddComponent<Image>().color = new Color(0.15f, 0.45f, 0.82f, 0.95f);
+
+            // BoxCollider must match the button's world-space size.
+            // Canvas scale is 0.0019 → 540 px wide, 66 px tall → ≈1.026 m × 0.125 m
+            var bc = btnGo.AddComponent<BoxCollider>();
+            bc.size = new Vector3(540f, 66f, 8f);
+
+            var gi = btnGo.AddComponent<GazeInteractable>();
+            gi.displayName = "Play Again";
+            gi.countsTowardLesson = false;
+
+            var btnLabel = UIText("PlayAgainLabel", btnGo.transform, 34, TextAnchor.MiddleCenter, Color.white);
+            Stretch(btnLabel.gameObject, 16, 16, 8, 8);
+            btnLabel.fontStyle = FontStyle.Bold;
+            btnLabel.text = "Gaze here  •  PLAY AGAIN";
+            btnGo.SetActive(false);
+
+            summary.playAgainInteractable = gi;
+            summary.playAgainButtonText = btnLabel;
+        }
+
+        // ---------------------------------------------------------------- Startup menu
+
+        static void BuildStartupMenu(Transform cam, LessonManager lesson)
+        {
+            lesson.waitForStartup = true;
+
+            // World-space canvas for the startup menu.
+            var go = new GameObject("StartupMenu", typeof(Canvas), typeof(CanvasScaler));
+            var canvas = go.GetComponent<Canvas>();
+            canvas.renderMode = RenderMode.WorldSpace;
+            var rt = (RectTransform)go.transform;
+            rt.sizeDelta = new Vector2(800, 600);
+            go.transform.localScale = Vector3.one * 0.0020f;
+            // Placed at player start position, 2.5 m ahead; adjusted at runtime by StartupMenu.
+            go.transform.position = cam.parent.position + new Vector3(0f, 1.6f, 2.5f);
+
+            var menu = go.AddComponent<StartupMenu>();
+
+            // Tutorial manager — sibling component on same GameObject.
+            var tut = go.AddComponent<TutorialManager>();
+            menu.tutorialManager = tut;
+
+            // Wire CardboardStartup ref.
+            var lmGo = Object.FindObjectOfType<CardboardStartup>();
+            if (lmGo != null) menu.cardboardStartup = lmGo;
+
+            // Dark panel.
+            var panel = UINode("MenuPanel", go.transform);
+            Stretch(panel);
+            panel.AddComponent<Image>().color = new Color(0.06f, 0.07f, 0.10f, 0.97f);
+
+            // Title.
+            var title = UIText("TitleLabel", panel.transform, 50, TextAnchor.UpperCenter, Color.white);
+            Anchor(title.gameObject, new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, 64), new Vector2(0, -42));
+            title.fontStyle = FontStyle.Bold;
+            title.text = "Earthquake Safety Drill";
+            menu.titleLabel = title;
+
+            // VR mode status label.
+            var vrLabel = UIText("VRModeLabel", panel.transform, 32, TextAnchor.UpperCenter,
+                                 new Color(0.4f, 0.9f, 0.4f));
+            Anchor(vrLabel.gameObject, new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, 40), new Vector2(0, -110));
+            vrLabel.supportRichText = true;
+            vrLabel.text = "<color=#44BB66>VR Mode: ON</color>";
+            menu.vrModeLabel = vrLabel;
+
+            // VR toggle button.
+            var vrBtn = MakeMenuButton("VRToggleButton", panel.transform,
+                                       new Vector2(0, 1.0f), new Vector2(1, 1.0f),
+                                       new Vector2(-56, 68), new Vector2(0, -192),
+                                       "Toggle VR / Recording Mode",
+                                       new Color(0.60f, 0.35f, 0.10f, 0.95f));
+            menu.vrToggleButton = vrBtn;
+
+            // Tutorial button.
+            var tutBtn = MakeMenuButton("TutorialButton", panel.transform,
+                                        new Vector2(0, 1.0f), new Vector2(1, 1.0f),
+                                        new Vector2(-56, 68), new Vector2(0, -282),
+                                        "Practice: Gaze Selection Tutorial",
+                                        new Color(0.12f, 0.38f, 0.55f, 0.95f));
+            menu.tutorialButton = tutBtn;
+
+            // Start Game button.
+            var startBtn = MakeMenuButton("StartGameButton", panel.transform,
+                                          new Vector2(0, 1.0f), new Vector2(1, 1.0f),
+                                          new Vector2(-56, 76), new Vector2(0, -390),
+                                          "START  —  Begin the Lesson",
+                                          new Color(0.12f, 0.45f, 0.20f, 0.95f));
+            menu.startGameButton = startBtn;
+
+            // ── Tutorial panel (shown over the menu during practice) ──────────
+            var tutPanel = UINode("TutorialPanel", go.transform);
+            Stretch(tutPanel);
+            tutPanel.AddComponent<Image>().color = new Color(0.05f, 0.06f, 0.09f, 0.98f);
+            var tutInstr = UIText("InstructionText", tutPanel.transform, 34,
+                                  TextAnchor.MiddleCenter, Color.white);
+            Stretch(tutInstr.gameObject, 48, 48, 48, 48);
+            tutInstr.supportRichText = true;
+            tutInstr.text = "Tutorial";
+            tutPanel.SetActive(false);
+
+            tut.tutorialPanel = tutPanel;
+            tut.instructionText = tutInstr;
+
+            // ── Tutorial practice targets (floating colored cubes in front of player) ──
+            var targets = new GazeInteractable[2];
+            for (int i = 0; i < 2; i++)
+            {
+                var tgtGo = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                tgtGo.name = $"TutorialTarget_{i + 1}";
+                tgtGo.transform.position = cam.parent.position + new Vector3((i - 0.5f) * 1.0f, 1.5f, 2.0f);
+                tgtGo.transform.localScale = Vector3.one * 0.25f;
+
+                var rend = tgtGo.GetComponent<Renderer>();
+                rend.sharedMaterial = Mat($"TutorialTarget_{i + 1}",
+                    i == 0 ? new Color(0.2f, 0.8f, 0.9f) : new Color(0.9f, 0.6f, 0.1f));
+
+                var tgi = tgtGo.AddComponent<GazeInteractable>();
+                tgi.displayName = $"Practice Target {i + 1}";
+                tgi.countsTowardLesson = false;
+                targets[i] = tgi;
+                tgtGo.SetActive(false);
+            }
+            tut.practiceTargets = targets;
+
+            menu.menuPanel = panel;
+        }
+
+        /// <summary>Creates a gaze-interactable button row inside a world-space canvas panel.</summary>
+        static GazeInteractable MakeMenuButton(string name, Transform parent,
+                                               Vector2 anchorMin, Vector2 anchorMax,
+                                               Vector2 sizeDelta, Vector2 anchoredPos,
+                                               string label, Color bgColor)
+        {
+            var btnGo = UINode(name, parent);
+            Anchor(btnGo, anchorMin, anchorMax, sizeDelta, anchoredPos);
+            btnGo.AddComponent<Image>().color = bgColor;
+
+            var bc = btnGo.AddComponent<BoxCollider>();
+            bc.size = new Vector3(Mathf.Abs(sizeDelta.x), Mathf.Abs(sizeDelta.y), 8f);
+
+            var gi = btnGo.AddComponent<GazeInteractable>();
+            gi.displayName = label;
+            gi.countsTowardLesson = false;
+
+            var lbl = UIText("Label", btnGo.transform, 30, TextAnchor.MiddleCenter, Color.white);
+            Stretch(lbl.gameObject, 16, 16, 8, 8);
+            lbl.fontStyle = FontStyle.Bold;
+            lbl.text = label;
+
+            return gi;
         }
 
         // ---------------------------------------------------------------- Furniture & people
@@ -379,11 +621,12 @@ namespace GazeVR.EditorTools
                 "Avoid lingering directly below wall-mounted objects.");
             if (speaker != null) speaker.AddComponent<ShakeableObject>();
 
-            // Exit door – safe evacuation route.
+            // Exit door – safe evacuation route and evacuation trigger.
             var door = Place(Props + "a door.prefab", root, new Vector3(6f, 0, -D / 2f + 0.2f), 0f);
             MakeHazard(door, "Exit Door", ItemSeverity.Safe,
                 "This is your evacuation route. Doorways can jam, so know where it is.",
                 "Do NOT run during shaking. Calmly evacuate through here once it stops.");
+            if (door != null) door.AddComponent<EvacuationTrigger>();
 
             // A sturdy student desk – the safe Drop-Cover-Hold spot, right in front of the player.
             var safeDesk = Place(Props + "table2.prefab", root, new Vector3(0f, 0, -4.4f), 0f);

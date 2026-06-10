@@ -6,55 +6,54 @@ using Google.XR.Cardboard;
 namespace GazeVR
 {
     /// <summary>
-    /// Initializes the Google Cardboard XR session at runtime:
-    ///   * keeps the screen awake and at full brightness,
-    ///   * scans / loads the viewer (lens) parameters via QR code on first run,
-    ///   * recenters the head tracker on a long trigger press,
-    ///   * reloads parameters when the viewer changes,
-    ///   * lets the close (X) button quit and the gear button rescan the viewer.
+    /// Initializes the Google Cardboard XR session.
+    /// When <see cref="GameSettings.ForceDesktopMode"/> is true (recording mode) the Cardboard
+    /// session is not started and XR rendering is disabled so the app records as a flat view.
     ///
-    /// All Cardboard API calls are compiled only for Android device builds; in the Editor this is a
-    /// no-op so the scene can be previewed without a headset.
+    /// Call <see cref="InitializeVR"/> after the startup menu to actually start Cardboard.
     /// </summary>
     public class CardboardStartup : MonoBehaviour
     {
         void Start()
         {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        }
+
+        /// <summary>
+        /// Called by <see cref="StartupMenu"/> once the player has made their mode choice.
+        /// Starts Cardboard if VR is desired, or disables XR rendering for recording mode.
+        /// </summary>
+        public void InitializeVR()
+        {
+            if (GameSettings.ForceDesktopMode)
+            {
+                UnityEngine.XR.XRSettings.enabled = false;
+                return;
+            }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
             Screen.brightness = 1.0f;
-
-            // Prompt the QR scan only if we have not stored a viewer profile yet.
             if (!Api.HasDeviceParams())
-            {
                 Api.ScanDeviceParams();
-            }
 #endif
         }
 
 #if UNITY_ANDROID && !UNITY_EDITOR
         void Update()
         {
+            if (GameSettings.ForceDesktopMode) return;
+
             if (Api.IsGearButtonPressed)
-            {
                 Api.ScanDeviceParams();
-            }
 
             if (Api.IsCloseButtonPressed)
-            {
                 Application.Quit();
-            }
 
             if (Api.IsTriggerHeldPressed)
-            {
                 Api.Recenter();
-            }
 
             if (Api.HasNewDeviceParams())
-            {
                 Api.ReloadDeviceParams();
-            }
 
             Api.UpdateScreenParams();
         }

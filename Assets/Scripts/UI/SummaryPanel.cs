@@ -1,5 +1,6 @@
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace GazeVR
@@ -7,7 +8,7 @@ namespace GazeVR
     /// <summary>
     /// End-of-drill summary panel. Shown automatically when <see cref="LessonManager"/> fires
     /// <see cref="LessonManager.onGameFinished"/>. Displays a score, a colour-coded list of
-    /// every discovered item with its description and recommended action, and a replay prompt.
+    /// every discovered item with its description and recommended action, and a Play Again button.
     ///
     /// The panel is a world-space canvas placed 2.5 m in front of the player and always faces them.
     /// </summary>
@@ -19,6 +20,12 @@ namespace GazeVR
         public Text scoreText;
         public Text itemListText;
         public Text replayText;
+
+        [Header("Play Again")]
+        [Tooltip("GazeInteractable on the Play Again button collider (child of this canvas).")]
+        public GazeInteractable playAgainInteractable;
+        [Tooltip("Label text on the Play Again button.")]
+        public Text playAgainButtonText;
 
         [Header("Placement")]
         public float distance = 2.5f;
@@ -37,6 +44,7 @@ namespace GazeVR
         {
             ResolveCamera();
             if (panel != null) panel.SetActive(false);
+            if (playAgainInteractable != null) playAgainInteractable.gameObject.SetActive(false);
         }
 
         void Start()
@@ -49,6 +57,9 @@ namespace GazeVR
         {
             var lesson = LessonManager.Instance;
             if (lesson != null) lesson.onGameFinished.RemoveListener(Show);
+
+            if (playAgainInteractable != null)
+                playAgainInteractable.onSelected.RemoveListener(OnPlayAgainSelected);
         }
 
         // ── Public API ───────────────────────────────────────────────────────
@@ -68,6 +79,15 @@ namespace GazeVR
 
             if (panel != null) panel.SetActive(true);
             _visible = true;
+
+            // Enable the Play Again button.
+            if (playAgainInteractable != null)
+            {
+                playAgainInteractable.gameObject.SetActive(true);
+                playAgainInteractable.onSelected.AddListener(OnPlayAgainSelected);
+            }
+            if (playAgainButtonText != null)
+                playAgainButtonText.text = "Gaze here  •  PLAY AGAIN";
         }
 
         // ── Section builders ─────────────────────────────────────────────────
@@ -83,8 +103,8 @@ namespace GazeVR
             if (scoreText == null || lesson == null) return;
 
             string coverPart = lesson.DidTakeCover
-                ? $"<color={ColSafe}>\u2713 Took cover</color>"
-                : $"<color={ColDanger}>\u2717 No cover taken  <color={ColMuted}>(-20 pts)</color></color>";
+                ? $"<color={ColSafe}>✓ Took cover</color>"
+                : $"<color={ColDanger}>✗ No cover taken  <color={ColMuted}>(-20 pts)</color></color>";
 
             scoreText.text =
                 $"<size=46><b>Score:  {pct}%</b></size>\n" +
@@ -122,7 +142,7 @@ namespace GazeVR
                 sb.Append($"<color={ColMuted}>{item.description}</color>\n");
 
                 // Recommended action (highlighted)
-                sb.Append($"<color={ColAction}>\u2192 {item.recommendedAction}</color>\n");
+                sb.Append($"<color={ColAction}>→ {item.recommendedAction}</color>\n");
 
                 // Blank separator
                 sb.Append('\n');
@@ -135,8 +155,16 @@ namespace GazeVR
         {
             if (replayText == null) return;
             replayText.text = pct >= 100
-                ? $"<color=#FFDD44><b>\u2605  Perfect score — you found everything and took cover!  \u2605</b></color>"
+                ? $"<color=#FFDD44><b>★  Perfect score — you found everything and took cover!  ★</b></color>"
                 : $"<color={ColAction}><i>Play again to discover more items and earn a perfect score.</i></color>";
+        }
+
+        // ── Play Again ───────────────────────────────────────────────────────
+
+        void OnPlayAgainSelected(GazeInteractable _)
+        {
+            GameSettings.StartupShown = true; // skip startup menu on reload
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         // ── LateUpdate / placement ────────────────────────────────────────────

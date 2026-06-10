@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
 
 namespace GazeVR
 {
@@ -98,7 +97,7 @@ namespace GazeVR
             }
 
             // ── Selection ────────────────────────────────────────────────────
-            if (XRSettings.isDeviceActive)
+            if (UnityEngine.XR.XRSettings.isDeviceActive && !GameSettings.ForceDesktopMode)
             {
                 // VR mode: dwell selection
                 if (hovered != null)
@@ -180,7 +179,7 @@ namespace GazeVR
         void MaybeMouseLook()
         {
             if (!enableEditorMouseLook) return;
-            if (XRSettings.isDeviceActive) return;
+            if (UnityEngine.XR.XRSettings.isDeviceActive && !GameSettings.ForceDesktopMode) return;
 
             Mouse mouse = Mouse.current;
             if (mouse == null || !mouse.rightButton.isPressed) return;

@@ -12,6 +12,7 @@ namespace GazeVR
     ///   <item>A green completion banner when all tracked items have been found.</item>
     ///   <item>A red earthquake warning when the drill starts.</item>
     ///   <item>A "FIND COVER!" prompt during the earthquake, replaced by "COVERED!" once taken.</item>
+    ///   <item>A "SHAKING STOPPED! Evacuate!" prompt after the earthquake ends.</item>
     /// </list>
     /// </summary>
     public class HazardHud : MonoBehaviour
@@ -37,13 +38,19 @@ namespace GazeVR
         public GameObject coverPromptPanel;
         public Text coverPromptText;
 
+        [Header("Evacuation prompt (after earthquake)")]
+        public GameObject evacuationPromptPanel;
+        public Text evacuationPromptText;
+
         [Header("Content")]
         [TextArea]
         public string completionMessage = "All items found!\nGet ready — earthquake incoming!";
         [TextArea]
-        public string drillWarningMessage = "EARTHQUAKE!\nDROP  \u2022  COVER  \u2022  HOLD ON";
+        public string drillWarningMessage = "EARTHQUAKE!\nDROP  •  COVER  •  HOLD ON";
         public string coverPromptMessage = "FIND COVER!\nGaze at a sturdy desk";
         public string coveredMessage = "YOU'RE COVERED!\nHold on!";
+        [TextArea]
+        public string evacuationPromptMessage = "SHAKING STOPPED!\nGaze at the EXIT DOOR to evacuate.";
 
         Coroutine _notifRoutine;
 
@@ -53,6 +60,7 @@ namespace GazeVR
             SetActive(completionBanner, false);
             SetActive(drillWarningPanel, false);
             SetActive(coverPromptPanel, false);
+            SetActive(evacuationPromptPanel, false);
 
             var lesson = LessonManager.Instance;
             if (lesson == null)
@@ -66,6 +74,8 @@ namespace GazeVR
             lesson.onAllItemsFound.AddListener(OnAllFound);
             lesson.onEarthquakeDrillStarted.AddListener(OnDrillStarted);
             lesson.onCoverTaken.AddListener(OnCoverTaken);
+            lesson.onEvacuationStarted.AddListener(OnEvacuationStarted);
+            lesson.onGameFinished.AddListener(OnGameFinished);
 
             OnProgress(lesson.FoundCategories, lesson.TotalCategories);
         }
@@ -79,6 +89,8 @@ namespace GazeVR
             lesson.onAllItemsFound.RemoveListener(OnAllFound);
             lesson.onEarthquakeDrillStarted.RemoveListener(OnDrillStarted);
             lesson.onCoverTaken.RemoveListener(OnCoverTaken);
+            lesson.onEvacuationStarted.RemoveListener(OnEvacuationStarted);
+            lesson.onGameFinished.RemoveListener(OnGameFinished);
         }
 
         // ── Event handlers ───────────────────────────────────────────────────
@@ -115,6 +127,26 @@ namespace GazeVR
         {
             if (coverPromptText != null) coverPromptText.text = coveredMessage;
             // Keep the panel visible so the player knows they succeeded.
+        }
+
+        void OnEvacuationStarted()
+        {
+            // Hide earthquake phase panels.
+            SetActive(drillWarningPanel, false);
+            SetActive(coverPromptPanel, false);
+
+            if (evacuationPromptText != null) evacuationPromptText.text = evacuationPromptMessage;
+            SetActive(evacuationPromptPanel, true);
+        }
+
+        void OnGameFinished(float _)
+        {
+            // Hide all HUD elements once the summary is shown.
+            SetActive(evacuationPromptPanel, false);
+            SetActive(drillWarningPanel, false);
+            SetActive(coverPromptPanel, false);
+            SetActive(completionBanner, false);
+            SetActive(notifPanel, false);
         }
 
         // ── Notification ─────────────────────────────────────────────────────

@@ -14,7 +14,7 @@ namespace GazeVR
     public class ScoreEvent : UnityEvent<float> { }
 
     /// <summary>Current phase of the lesson.</summary>
-    public enum GamePhase { Exploring, Earthquake, Summary }
+    public enum GamePhase { Exploring, Earthquake, Evacuation, Summary }
 
     /// <summary>
     /// Central lesson coordinator. On <c>Awake</c> it registers every
@@ -47,6 +47,11 @@ namespace GazeVR
                  "Set to 0 to disable the timer (manual trigger only).")]
         public float explorationDuration = 60f;
 
+        [Header("Startup")]
+        [Tooltip("When true, the exploration timer does not start until BeginLesson() is called.\n" +
+                 "Set this when a StartupMenu is present in the scene.")]
+        public bool waitForStartup = false;
+
         [Header("Events")]
         [Tooltip("Fired every time any item is selected (including repeats).")]
         public GazeInteractableEvent onItemSelected = new GazeInteractableEvent();
@@ -66,6 +71,9 @@ namespace GazeVR
         [Tooltip("Fired when the player successfully takes cover.")]
         public UnityEvent onCoverTaken = new UnityEvent();
 
+        [Tooltip("Fired when the earthquake ends and the player should evacuate through the exit door.")]
+        public UnityEvent onEvacuationStarted = new UnityEvent();
+
         [Tooltip("Fired when the drill ends and summary is ready. Passes the score (0–1).")]
         public ScoreEvent onGameFinished = new ScoreEvent();
 
@@ -76,6 +84,9 @@ namespace GazeVR
 
         public bool DrillStarted { get; private set; }
         public bool DidTakeCover { get; private set; }
+        public bool DidEvacuate { get; private set; }
+
+        bool _lessonStarted;
 
         /// <summary>Total number of unique tracked categories.</summary>
         public int TotalCategories => _totalTrackedCategories;
@@ -125,6 +136,19 @@ namespace GazeVR
         void Start()
         {
             onProgress.Invoke(FoundCategories, TotalCategories);
+
+            if (!waitForStartup)
+                BeginLesson();
+        }
+
+        /// <summary>
+        /// Starts the exploration timer. Called automatically when <see cref="waitForStartup"/> is false,
+        /// or explicitly by <see cref="StartupMenu"/> once the player has dismissed the startup screen.
+        /// </summary>
+        public void BeginLesson()
+        {
+            if (_lessonStarted) return;
+            _lessonStarted = true;
 
             if (explorationDuration > 0f)
             {
@@ -247,15 +271,25 @@ namespace GazeVR
         IEnumerator FallbackSummaryDelay()
         {
             yield return new WaitForSecondsRealtime(8f);
-            OnDrillComplete();
+            OnDrillComplete();  // → Evacuation phase
         }
 
         void OnDrillComplete()
         {
-            if (CurrentPhase == GamePhase.Summary) return;
+            if (CurrentPhase >= GamePhase.Evacuation) return;
+            CurrentPhase = GamePhase.Evacuation;
+            Debug.Log("[LessonManager] Earthquake over — evacuation phase.");
+            onEvacuationStarted.Invoke();
+        }
+
+        /// <summary>Called by <see cref="EvacuationTrigger"/> when the player selects the exit door.</summary>
+        public void CompleteEvacuation()
+        {
+            if (CurrentPhase != GamePhase.Evacuation) return;
+            DidEvacuate = true;
             CurrentPhase = GamePhase.Summary;
             float score = CalculateScore();
-            Debug.Log($"[LessonManager] Drill complete. Score: {score * 100f:0}%");
+            Debug.Log($"[LessonManager] Evacuation complete. Score: {score * 100f:0}%");
             onGameFinished.Invoke(score);
         }
 
