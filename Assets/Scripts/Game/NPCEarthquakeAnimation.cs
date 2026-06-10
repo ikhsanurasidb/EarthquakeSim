@@ -18,6 +18,14 @@ namespace GazeVR
         static readonly int StartHidingHash = Animator.StringToHash("StartHiding");
 
         [Header("Cover slide")]
+        [Tooltip("Explicit desk/table for this NPC to slide under. " +
+                 "Leave empty to auto-find the nearest object whose name contains deskNameKeyword.")]
+        public Transform deskTarget;
+
+        [Tooltip("Name substring used for auto-finding a desk when deskTarget is not assigned. " +
+                 "Matches case-insensitively against GameObject names (e.g. \"table\", \"desk\").")]
+        public string deskNameKeyword = "table";
+
         [Tooltip("How far (metres) to slide toward the nearest desk when hiding starts.")]
         public float slideDistance = 0.7f;
 
@@ -62,21 +70,27 @@ namespace GazeVR
 
         IEnumerator SlideUnderDesk()
         {
-            // Find the closest desk-category GazeInteractable in the scene.
-            GazeInteractable nearestDesk = null;
-            float bestDist = float.MaxValue;
-            foreach (var gi in Object.FindObjectsByType<GazeInteractable>(FindObjectsSortMode.None))
+            // Resolve the target desk: use the explicit override if set, otherwise find the
+            // nearest GameObject whose name contains deskNameKeyword (case-insensitive).
+            // Student desks are plain furniture with no GazeInteractable, so we search by name.
+            Transform target = deskTarget;
+            if (target == null && !string.IsNullOrEmpty(deskNameKeyword))
             {
-                if (gi.categoryId != "desk") continue;
-                float d = (gi.transform.position - transform.position).sqrMagnitude;
-                if (d < bestDist) { bestDist = d; nearestDesk = gi; }
+                string keyword = deskNameKeyword.ToLowerInvariant();
+                float bestDist = float.MaxValue;
+                foreach (var go in Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None))
+                {
+                    if (!go.name.ToLowerInvariant().Contains(keyword)) continue;
+                    float d = (go.transform.position - transform.position).sqrMagnitude;
+                    if (d < bestDist) { bestDist = d; target = go.transform; }
+                }
             }
 
             // Direction toward desk (horizontal only)
             Vector3 dir = Vector3.zero;
-            if (nearestDesk != null)
+            if (target != null)
             {
-                dir = nearestDesk.transform.position - transform.position;
+                dir = target.position - transform.position;
                 dir.y = 0f;
                 if (dir.sqrMagnitude > 0.001f) dir = dir.normalized;
             }

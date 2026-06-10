@@ -40,6 +40,7 @@ namespace GazeVR
         Transform _cam;
         bool _visible;
 
+
         void Awake()
         {
             ResolveCamera();
@@ -102,9 +103,10 @@ namespace GazeVR
         {
             if (scoreText == null || lesson == null) return;
 
+            int coverPenalty = Mathf.RoundToInt(LessonManager.CoverScoreWeight * 100f);
             string coverPart = lesson.DidTakeCover
                 ? $"<color={ColSafe}>✓ Took cover</color>"
-                : $"<color={ColDanger}>✗ No cover taken  <color={ColMuted}>(-20 pts)</color></color>";
+                : $"<color={ColDanger}>✗ No cover taken  <color={ColMuted}>(-{coverPenalty} pts)</color></color>";
 
             scoreText.text =
                 $"<size=46><b>Score:  {pct}%</b></size>\n" +
@@ -171,25 +173,18 @@ namespace GazeVR
 
         void LateUpdate()
         {
-            if (!_visible || _cam == null) return;
-            transform.rotation = Quaternion.LookRotation(transform.position - _cam.position, Vector3.up);
+            if (!_visible) return;
+            WorldSpaceUI.FaceCamera(transform, _cam);
         }
 
         void PlaceInFront()
         {
-            if (_cam == null) return;
-            Vector3 fwd = _cam.forward;
-            fwd.y = 0f;
-            if (fwd.sqrMagnitude < 0.0001f) fwd = Vector3.forward;
-            fwd.Normalize();
-            transform.position = _cam.position + fwd * distance;
-            transform.rotation = Quaternion.LookRotation(transform.position - _cam.position, Vector3.up);
+            WorldSpaceUI.PlaceInFront(transform, _cam, distance);
         }
 
         void ResolveCamera()
         {
-            if (_cam != null) return;
-            if (Camera.main != null) _cam = Camera.main.transform;
+            _cam = WorldSpaceUI.ResolveCamera(_cam);
         }
     }
 }

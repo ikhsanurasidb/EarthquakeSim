@@ -104,14 +104,8 @@ namespace GazeVR
 
         void PlaceInFrontOfCamera()
         {
-            var cam = Camera.main;
-            if (cam == null) return;
-            Vector3 fwd = cam.transform.forward;
-            fwd.y = 0f;
-            if (fwd.sqrMagnitude < 0.0001f) fwd = Vector3.forward;
-            fwd.Normalize();
-            transform.position = cam.transform.position + fwd * 2.5f;
-            transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position, Vector3.up);
+            var cam = WorldSpaceUI.ResolveCamera();
+            WorldSpaceUI.PlaceInFront(transform, cam, 2.5f);
         }
     }
 }

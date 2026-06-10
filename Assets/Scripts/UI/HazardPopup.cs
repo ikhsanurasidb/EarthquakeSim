@@ -67,11 +67,10 @@ namespace GazeVR
         {
             if (item == null) return;
 
-            // Suppress description popup during active gameplay phases.
+            // Only show during Summary — suppress during all active gameplay phases
+            // (Exploring, Earthquake, Evacuation) to keep the player focused.
             var lesson = LessonManager.Instance;
-            if (lesson != null &&
-                (lesson.CurrentPhase == GamePhase.Exploring ||
-                 lesson.CurrentPhase == GamePhase.Earthquake))
+            if (lesson != null && lesson.CurrentPhase != GamePhase.Summary)
                 return;
 
             ResolveCamera();
@@ -98,26 +97,18 @@ namespace GazeVR
 
         void LateUpdate()
         {
-            if (!_shown || _cam == null) return;
-            transform.rotation = Quaternion.LookRotation(transform.position - _cam.position, Vector3.up);
+            if (!_shown) return;
+            WorldSpaceUI.FaceCamera(transform, _cam);
         }
 
         void PlaceInFront()
         {
-            if (_cam == null) return;
-            Vector3 forward = _cam.forward;
-            forward.y = 0f;
-            if (forward.sqrMagnitude < 0.0001f) forward = Vector3.forward;
-            forward.Normalize();
-            transform.position = _cam.position + forward * distance + Vector3.up * verticalOffset;
-            transform.rotation = Quaternion.LookRotation(transform.position - _cam.position, Vector3.up);
+            WorldSpaceUI.PlaceInFront(transform, _cam, distance, verticalOffset);
         }
 
         void ResolveCamera()
         {
-            if (_cam != null) return;
-            if (follow != null) _cam = follow;
-            else if (Camera.main != null) _cam = Camera.main.transform;
+            _cam = WorldSpaceUI.ResolveCamera(follow != null ? follow : _cam);
         }
 
         static string SeverityLabel(ItemSeverity s) => s switch

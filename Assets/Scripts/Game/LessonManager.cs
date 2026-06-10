@@ -191,15 +191,20 @@ namespace GazeVR
             return result;
         }
 
+        /// <summary>Weight of item discoveries in the final score (0–1).</summary>
+        public const float ItemScoreWeight = 0.80f;
+
+        /// <summary>Weight of taking cover in the final score (0–1).</summary>
+        public const float CoverScoreWeight = 0.20f;
+
         /// <summary>Computes the final score (0–1).
-        /// 80 % is earned from category discoveries; 20 % for taking cover.</summary>
+        /// <see cref="ItemScoreWeight"/> from category discoveries + <see cref="CoverScoreWeight"/> for taking cover.</summary>
         public float CalculateScore()
         {
             float itemScore = _totalTrackedCategories > 0
                 ? (float)FoundCategories / _totalTrackedCategories
                 : 0f;
-            float coverScore = DidTakeCover ? 1f : 0f;
-            return itemScore * 0.8f + coverScore * 0.2f;
+            return itemScore * ItemScoreWeight + (DidTakeCover ? 1f : 0f) * CoverScoreWeight;
         }
 
         /// <summary>Call when the player takes cover under a desk during the drill.</summary>
@@ -276,7 +281,7 @@ namespace GazeVR
 
         void OnDrillComplete()
         {
-            if (CurrentPhase >= GamePhase.Evacuation) return;
+            if (CurrentPhase == GamePhase.Evacuation || CurrentPhase == GamePhase.Summary) return;
             CurrentPhase = GamePhase.Evacuation;
             Debug.Log("[LessonManager] Earthquake over — evacuation phase.");
             onEvacuationStarted.Invoke();
