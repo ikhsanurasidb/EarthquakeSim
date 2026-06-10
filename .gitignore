@@ -105,3 +105,9 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Unity recovery and do-not-ship output folders
+/[Aa]ssets/_Recovery/
+*BackUpThisFolder_ButDontShipItWithYourGame/
+*DoNotShip/
+*_DoNotShip/
