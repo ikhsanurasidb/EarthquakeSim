@@ -1510,7 +1510,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a36829e503644464898f943a31a201c3, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -2371,7 +2371,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: e9555ce6d9532664182801c22032ea08, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -3045,7 +3045,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 349d86bb40b51804fb5944b0e052a952, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -4415,7 +4415,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 0670a1beddc6f164da78ef61cb8944fa, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -4517,7 +4517,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 2a5f1d861e754ba43acd3da45d09a159, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -5835,7 +5835,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 974d8d9325d828c46a6ce15e72d1da74, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -6267,7 +6267,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: c6c899e3d13132f4ebe916a1f5bf81b0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -6851,7 +6851,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 7005fb955794a974887ba74ded278443, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -8404,7 +8404,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: e0e83f03f1fc8d64d8997bc7796f00f2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -9269,7 +9269,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 533b26f8fc19c4c408a6df70025e7684, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
