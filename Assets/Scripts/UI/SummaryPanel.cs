@@ -89,7 +89,7 @@ namespace GazeVR
             scoreText.text =
                 $"<size=46><b>Score:  {pct}%</b></size>\n" +
                 $"<color={ColMuted}>Discoveries: </color>" +
-                $"<b>{lesson.FoundCategories} / {lesson.TotalCategories}</b>" +
+                $"<b>{lesson.FoundCategories}</b>" +
                 $"     {coverPart}";
         }
 

@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -607,7 +607,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5127665253469060, guid: 04dadcfb8f3a78347aff46020e1aae74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 624921847}
+    - targetCorrespondingSourceObject: {fileID: 5127665253469060, guid: 04dadcfb8f3a78347aff46020e1aae74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 624921848}
   m_SourcePrefab: {fileID: 100100000, guid: 04dadcfb8f3a78347aff46020e1aae74, type: 3}
 --- !u!4 &128615818 stripped
 Transform:
@@ -971,7 +977,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6524284624272953828, guid: 0577fdeb811a83a49887000239fb6ff5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2080776009}
+    - targetCorrespondingSourceObject: {fileID: 6524284624272953828, guid: 0577fdeb811a83a49887000239fb6ff5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2080776010}
   m_SourcePrefab: {fileID: 100100000, guid: 0577fdeb811a83a49887000239fb6ff5, type: 3}
 --- !u!4 &195927088 stripped
 Transform:
@@ -1004,7 +1016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1096,6 +1108,16 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &291468081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5507138504148570191, guid: a168964764ff0eb40934c99bb292c446, type: 3}
+  m_PrefabInstance: {fileID: 454085448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &313318324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8738495721609720183, guid: cf551a8bd10eb4a4abc34c01305ff4da, type: 3}
+  m_PrefabInstance: {fileID: 1516959647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &336073755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1334,6 +1356,11 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &346246480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8829154850212630227, guid: 5a2d8713fea8b894e9553e5bbe284266, type: 3}
+  m_PrefabInstance: {fileID: 1027688700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &435719343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1389,7 +1416,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4602286018893424137, guid: 053ab6d91d6e8e3489aca136c8677459, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1350147690}
+    - targetCorrespondingSourceObject: {fileID: 4602286018893424137, guid: 053ab6d91d6e8e3489aca136c8677459, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1350147691}
   m_SourcePrefab: {fileID: 100100000, guid: 053ab6d91d6e8e3489aca136c8677459, type: 3}
 --- !u!4 &435719344 stripped
 Transform:
@@ -1451,13 +1484,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5507138504148570191, guid: a168964764ff0eb40934c99bb292c446, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 454085450}
+    - targetCorrespondingSourceObject: {fileID: 5507138504148570191, guid: a168964764ff0eb40934c99bb292c446, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 454085451}
   m_SourcePrefab: {fileID: 100100000, guid: a168964764ff0eb40934c99bb292c446, type: 3}
 --- !u!4 &454085449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4369455191309817779, guid: a168964764ff0eb40934c99bb292c446, type: 3}
   m_PrefabInstance: {fileID: 454085448}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &454085450
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291468081}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: a36829e503644464898f943a31a201c3, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &454085451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291468081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1 &511265744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2027,6 +2100,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &553783913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
+  m_PrefabInstance: {fileID: 748775038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &570075770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2146,6 +2224,11 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &594816920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1352303529906801858, guid: 37bbbb489c971f94882d3ae7bcbd90e4, type: 3}
+  m_PrefabInstance: {fileID: 1021581388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &615960099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2270,6 +2353,50 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &624921846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5127665253469060, guid: 04dadcfb8f3a78347aff46020e1aae74, type: 3}
+  m_PrefabInstance: {fileID: 128615817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &624921847
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624921846}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: e9555ce6d9532664182801c22032ea08, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &624921848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624921846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
+--- !u!1 &643013724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8872011485417712012, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
+  m_PrefabInstance: {fileID: 1434098639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &681679646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2513,7 +2640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2892,13 +3019,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 748775040}
+    - targetCorrespondingSourceObject: {fileID: 6488826972771884260, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 748775041}
   m_SourcePrefab: {fileID: 100100000, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
 --- !u!4 &748775039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6125467769402437037, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
   m_PrefabInstance: {fileID: 748775038}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &748775040
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553783913}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: 349d86bb40b51804fb5944b0e052a952, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &748775041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553783913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1 &814409863
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,7 +3671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3622,7 +3789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3785,7 +3952,7 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3806,6 +3973,7 @@ GameObject:
   - component: {fileID: 989582334}
   - component: {fileID: 989582333}
   - component: {fileID: 989582332}
+  - component: {fileID: 989582336}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3933,6 +4101,45 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &989582336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989582330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00350c0fceab03a479d7f5e17e09aabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.PlayerCoverAnimation
+  standingHeight: 1.6
+  crouchHeight: 0.5
+  crouchDuration: 0.9
+  crouchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1003019098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,7 +4242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4182,13 +4389,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1352303529906801858, guid: 37bbbb489c971f94882d3ae7bcbd90e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1021581390}
+    - targetCorrespondingSourceObject: {fileID: 1352303529906801858, guid: 37bbbb489c971f94882d3ae7bcbd90e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1021581391}
   m_SourcePrefab: {fileID: 100100000, guid: 37bbbb489c971f94882d3ae7bcbd90e4, type: 3}
 --- !u!4 &1021581389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6522329275384735907, guid: 37bbbb489c971f94882d3ae7bcbd90e4, type: 3}
   m_PrefabInstance: {fileID: 1021581388}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1021581390
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594816920}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: 0670a1beddc6f164da78ef61cb8944fa, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1021581391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594816920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1001 &1027688700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4244,13 +4491,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8829154850212630227, guid: 5a2d8713fea8b894e9553e5bbe284266, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1027688702}
+    - targetCorrespondingSourceObject: {fileID: 8829154850212630227, guid: 5a2d8713fea8b894e9553e5bbe284266, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1027688703}
   m_SourcePrefab: {fileID: 100100000, guid: 5a2d8713fea8b894e9553e5bbe284266, type: 3}
 --- !u!4 &1027688701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 591304232393648912, guid: 5a2d8713fea8b894e9553e5bbe284266, type: 3}
   m_PrefabInstance: {fileID: 1027688700}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1027688702
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346246480}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2a5f1d861e754ba43acd3da45d09a159, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1027688703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346246480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1001 &1044580809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4277,7 +4564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4643,7 +4930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4993,7 +5280,7 @@ MonoBehaviour:
   scoreText: {fileID: 1518197510}
   itemListText: {fileID: 936529945}
   replayText: {fileID: 1901624157}
-  distance: 2.5
+  distance: 1.2
 --- !u!114 &1201099360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5016,7 +5303,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1201099361
 Canvas:
   m_ObjectHideFlags: 0
@@ -5027,14 +5314,14 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 989582335}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
@@ -5530,6 +5817,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.6}
   m_SizeDelta: {x: 820, y: 560}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1350147689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4602286018893424137, guid: 053ab6d91d6e8e3489aca136c8677459, type: 3}
+  m_PrefabInstance: {fileID: 435719343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1350147690
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350147689}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: 974d8d9325d828c46a6ce15e72d1da74, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1350147691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350147689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1001 &1373132540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5732,7 +6058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.LessonManager
   attendance: {fileID: 1391059579}
   autoRegisterSceneItems: 1
-  explorationDuration: 2
+  explorationDuration: 20
   onItemSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -5915,13 +6241,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8872011485417712012, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1434098641}
+    - targetCorrespondingSourceObject: {fileID: 8872011485417712012, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1434098642}
   m_SourcePrefab: {fileID: 100100000, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
 --- !u!4 &1434098640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7489310986808987246, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
   m_PrefabInstance: {fileID: 1434098639}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1434098641
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643013724}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: c6c899e3d13132f4ebe916a1f5bf81b0, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1434098642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643013724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1001 &1437428104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6181,7 +6547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6459,13 +6825,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8738495721609720183, guid: cf551a8bd10eb4a4abc34c01305ff4da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1516959649}
+    - targetCorrespondingSourceObject: {fileID: 8738495721609720183, guid: cf551a8bd10eb4a4abc34c01305ff4da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1516959650}
   m_SourcePrefab: {fileID: 100100000, guid: cf551a8bd10eb4a4abc34c01305ff4da, type: 3}
 --- !u!4 &1516959648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 766183437483494206, guid: cf551a8bd10eb4a4abc34c01305ff4da, type: 3}
   m_PrefabInstance: {fileID: 1516959647}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1516959649
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313318324}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7005fb955794a974887ba74ded278443, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1516959650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313318324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1 &1518197507
 GameObject:
   m_ObjectHideFlags: 0
@@ -7025,6 +7431,11 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1674530696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8872011485417712012, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
+  m_PrefabInstance: {fileID: 1883942498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1693401995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7489,7 +7900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757723854870162, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.4
+      value: -5.19
       objectReference: {fileID: 0}
     - target: {fileID: 4757723854870162, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7820,7 +8231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7922,7 +8333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7489310986808987246, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 7489310986808987246, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7930,7 +8341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7489310986808987246, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 7489310986808987246, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7967,13 +8378,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8872011485417712012, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883942500}
+    - targetCorrespondingSourceObject: {fileID: 8872011485417712012, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883942501}
   m_SourcePrefab: {fileID: 100100000, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
 --- !u!4 &1883942499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7489310986808987246, guid: 5938e8ddb3b604a41bcd7c57821e1cb3, type: 3}
   m_PrefabInstance: {fileID: 1883942498}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1883942500
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674530696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: e0e83f03f1fc8d64d8997bc7796f00f2, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1883942501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674530696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1 &1901624156
 GameObject:
   m_ObjectHideFlags: 0
@@ -8708,7 +9159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8800,6 +9251,45 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2080776008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524284624272953828, guid: 0577fdeb811a83a49887000239fb6ff5, type: 3}
+  m_PrefabInstance: {fileID: 195927087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2080776009
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080776008}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ae3459f40eace6943ae977695718d0d3, type: 3}
+  m_Controller: {fileID: 9100000, guid: 533b26f8fc19c4c408a6df70025e7684, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2080776010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080776008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b54715407ab52442bb4cc7799981e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.NPCEarthquakeAnimation
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
