@@ -108,6 +108,7 @@ InitTestScene*.unity*
 
 # Unity recovery and do-not-ship output folders
 /[Aa]ssets/_Recovery/
+/[Aa]ssets/_Recovery.meta
 *BackUpThisFolder_ButDontShipItWithYourGame/
 *DoNotShip/
 *_DoNotShip/
