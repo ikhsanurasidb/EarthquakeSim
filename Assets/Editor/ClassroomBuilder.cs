@@ -15,10 +15,11 @@ namespace GazeVR.EditorTools
     ///   1. sanitize all materials (no magenta),
     ///   2. create a fresh scene with lighting and a big classroom shell,
     ///   3. place desks, chairs, a teacher and a 50%+ attendance of students,
-    ///   4. build the player rig: camera + TrackedPoseDriver (head tracking) + gaze reticle + pointer,
-    ///   5. create the world-space hazard popup and HUD,
+    ///   4. build the player rig: camera + TrackedPoseDriver + gaze reticle + pointer + EarthquakeShaker,
+    ///   5. create the world-space hazard popup and HUD (with earthquake warning panel),
     ///   6. tag selected props as gaze hazards with educational descriptions,
-    ///   7. save the scene and register it as build scene 0.
+    ///   7. attach ShakeableObject to furniture and rattleable hazard props,
+    ///   8. save the scene and register it as build scene 0.
     ///
     /// The scene is built and saved via this editor menu (not RunCommand), so the result persists.
     /// </summary>
@@ -53,6 +54,9 @@ namespace GazeVR.EditorTools
             BuildRoomShell();
             var lesson = BuildManagers(out ClassroomAttendance attendance);
             Transform cam = BuildPlayerRig();
+            // EarthquakeShaker lives on the Player root (parent of the camera) so the
+            // TrackedPoseDriver/GazePointer on the camera are unaffected by the shake.
+            cam.parent.gameObject.AddComponent<EarthquakeShaker>();
             HazardPopup popup = BuildPopup(cam);
             BuildHud(cam);
 
@@ -251,7 +255,22 @@ namespace GazeVR.EditorTools
             hud.counterText = counter;
             hud.completionBanner = banner;
             hud.completionText = bannerText;
-            banner.SetActive(false); // hidden until all hazards are found
+            banner.SetActive(false);
+
+            // Earthquake drill warning (hidden until the drill starts).
+            var drillPanel = UINode("DrillWarningPanel", go.transform);
+            Anchor(drillPanel, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+                   new Vector2(950, 210), new Vector2(0, 20));
+            drillPanel.AddComponent<Image>().color = new Color(0.78f, 0.08f, 0.08f, 0.97f);
+            var drillText = UIText("DrillWarningText", drillPanel.transform,
+                                   46, TextAnchor.MiddleCenter, Color.white);
+            Stretch(drillText.gameObject, 20, 20, 14, 14);
+            drillText.fontStyle = FontStyle.Bold;
+            AddOutline(drillText.gameObject);
+
+            hud.drillWarningPanel = drillPanel;
+            hud.drillWarningText = drillText;
+            drillPanel.SetActive(false);
         }
 
         // ---------------------------------------------------------------- Furniture & people
@@ -275,8 +294,10 @@ namespace GazeVR.EditorTools
                 foreach (float cx in cols)
                 {
                     // Desk faces the student; chair and student sit behind it (lower z).
-                    Place(Props + "table2.prefab", furniture, new Vector3(cx, 0, rz), 0f);
-                    Place(Props + "chair.prefab", furniture, new Vector3(cx, 0, rz - 0.6f), 0f);
+                    var desk = Place(Props + "table2.prefab", furniture, new Vector3(cx, 0, rz), 0f);
+                    var chair = Place(Props + "chair.prefab", furniture, new Vector3(cx, 0, rz - 0.6f), 0f);
+                    if (desk != null) desk.AddComponent<ShakeableObject>();
+                    if (chair != null) chair.AddComponent<ShakeableObject>();
 
                     if (present < presentTarget)
                     {
@@ -296,6 +317,14 @@ namespace GazeVR.EditorTools
             var board = Place(Props + "board.prefab", furniture, new Vector3(0f, 1.6f, D / 2f - 0.2f), 180f, ground: false);
             if (board != null) board.name = "Board";
 
+            // Teacher's desk can also rattle.
+            // (already captured above as the table1 Place call — tag furniture children)
+            foreach (Transform child in furniture)
+            {
+                if (child.GetComponent<ShakeableObject>() == null)
+                    child.gameObject.AddComponent<ShakeableObject>();
+            }
+
             return totalSeats;
         }
 
@@ -306,24 +335,29 @@ namespace GazeVR.EditorTools
             var root = new GameObject("Hazards").transform;
 
             // Tall lockers along the left wall – topple hazard.
-            Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 1.0f), 90f);
-            Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 2.6f), 90f);
+            var locker1 = Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 1.0f), 90f);
+            var locker2 = Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 2.6f), 90f);
             var locker = Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 4.2f), 90f);
             MakeHazard(locker, "Tall Lockers", HazardSeverity.Danger,
                 "Tall, heavy lockers can topple over and block exits during strong shaking.",
                 "Stay clear of tall furniture. Never stand or shelter right beside it.");
+            if (locker1 != null) locker1.AddComponent<ShakeableObject>();
+            if (locker2 != null) locker2.AddComponent<ShakeableObject>();
+            if (locker != null) locker.AddComponent<ShakeableObject>();
 
             // Bookshelf / storage rack along the right wall – falling objects.
             var rack = Place(Props + "rack.prefab", root, new Vector3(8.3f, 0, 3.5f), -90f);
             MakeHazard(rack, "Storage Rack", HazardSeverity.Caution,
                 "Items stored up high on open racks can fall and hit you.",
                 "Keep heavy items low. Move away from shelves when shaking starts.");
+            if (rack != null) rack.AddComponent<ShakeableObject>();
 
             // Glass display cabinet – broken glass.
             var showcase = Place(Props + "showcase.prefab", root, new Vector3(8.3f, 0, -1.0f), -90f);
             MakeHazard(showcase, "Glass Display Cabinet", HazardSeverity.Danger,
                 "Glass cabinets can shatter and scatter sharp shards across the floor.",
                 "Keep your distance from glass. Wear shoes and avoid the broken area afterwards.");
+            if (showcase != null) showcase.AddComponent<ShakeableObject>();
 
             // Window blinds – glass hazard (wall-mounted).
             var window = Place(Props + "jalousie.prefab", root, new Vector3(-8.8f, 1.7f, -2.5f), 90f, ground: false);
@@ -336,12 +370,14 @@ namespace GazeVR.EditorTools
             MakeHazard(projector, "Ceiling Projector", HazardSeverity.Danger,
                 "Ceiling-mounted equipment can shake loose and fall straight down.",
                 "Do not stand directly underneath. Get under a sturdy desk instead.");
+            if (projector != null) projector.AddComponent<ShakeableObject>();
 
             // Wall speaker – caution.
             var speaker = Place(Props + "speaker.prefab", root, new Vector3(-8.7f, 2.8f, 5.5f), 90f, ground: false);
             MakeHazard(speaker, "Wall Speaker", HazardSeverity.Caution,
                 "Mounted speakers and fixtures can drop from the wall.",
                 "Avoid lingering directly below wall-mounted objects.");
+            if (speaker != null) speaker.AddComponent<ShakeableObject>();
 
             // Exit door – safe evacuation route.
             var door = Place(Props + "a door.prefab", root, new Vector3(6f, 0, -D / 2f + 0.2f), 0f);
@@ -355,6 +391,7 @@ namespace GazeVR.EditorTools
             MakeHazard(safeDesk, "Sturdy Desk", HazardSeverity.Safe,
                 "A strong desk is the best shelter from falling objects.",
                 "DROP, COVER and HOLD ON: get under it and hold a leg until shaking stops.");
+            if (safeDesk != null) safeDesk.AddComponent<ShakeableObject>();
         }
 
         // ---------------------------------------------------------------- Helpers

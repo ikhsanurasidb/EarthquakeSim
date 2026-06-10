@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,10 +10,9 @@ namespace GazeVR
     public class HazardProgressEvent : UnityEvent<int, int> { }
 
     /// <summary>
-    /// Central lesson logic for the earthquake-awareness drill. It registers every gaze hazard in
-    /// the scene, tracks how many have been identified, raises progress / completion events, exposes
-    /// the classroom attendance, and provides the (currently stubbed) hook that begins the
-    /// earthquake drill shaking phase.
+    /// Central lesson logic for the earthquake-awareness drill. Registers every gaze hazard in
+    /// the scene, tracks how many have been identified, raises progress / completion events, and
+    /// automatically starts the earthquake drill a configurable delay after the last hazard is found.
     /// </summary>
     public class LessonManager : MonoBehaviour
     {
@@ -27,6 +27,11 @@ namespace GazeVR
                  "registered automatically on Awake.")]
         public bool autoRegisterSceneHazards = true;
 
+        [Header("Earthquake Drill")]
+        [Tooltip("Seconds to wait after the last hazard is found before the drill starts " +
+                 "automatically. Set to 0 to disable auto-start (manual trigger only).")]
+        public float autoStartDrillDelay = 3f;
+
         [Header("Events")]
         [Tooltip("Fired the first time a particular hazard is identified.")]
         public GazeInteractableEvent onHazardFound = new GazeInteractableEvent();
@@ -37,7 +42,7 @@ namespace GazeVR
         [Tooltip("Fired once when every hazard has been identified.")]
         public UnityEvent onAllHazardsFound = new UnityEvent();
 
-        [Tooltip("Fired when the earthquake drill shaking phase begins (stub).")]
+        [Tooltip("Fired when the earthquake drill shaking phase begins.")]
         public UnityEvent onEarthquakeDrillStarted = new UnityEvent();
 
         readonly List<GazeInteractable> _hazards = new List<GazeInteractable>();
@@ -94,25 +99,33 @@ namespace GazeVR
             if (TotalHazards > 0 && FoundHazards >= TotalHazards)
             {
                 onAllHazardsFound.Invoke();
+
+                if (autoStartDrillDelay > 0f)
+                    StartCoroutine(DelayedDrillStart(autoStartDrillDelay));
             }
         }
 
+        IEnumerator DelayedDrillStart(float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            StartEarthquakeDrill();
+        }
+
         /// <summary>
-        /// Begins the earthquake drill shaking phase.
-        /// STUB: the shaking / Drop-Cover-Hold scoring is not implemented yet — this only flips the
-        /// flag, logs, and raises <see cref="onEarthquakeDrillStarted"/> for future work to hook into.
+        /// Begins the earthquake drill shaking phase. If <see cref="autoStartDrillDelay"/> is
+        /// greater than zero this is called automatically once all hazards have been found;
+        /// it can also be triggered manually (e.g. from a UI button or a test harness).
         /// </summary>
         public void StartEarthquakeDrill()
         {
             if (DrillStarted) return;
             DrillStarted = true;
 
-            Debug.Log("[LessonManager] Earthquake drill started (stub). " +
-                      "TODO: add ground/camera shake and Drop-Cover-Hold scoring.");
+            Debug.Log("[LessonManager] Earthquake drill started.");
             onEarthquakeDrillStarted.Invoke();
         }
 
-        // --- Attendance pass-throughs ---
+        // ── Attendance pass-throughs ─────────────────────────────────────────
 
         public bool AttendanceMeetsThreshold => attendance == null || attendance.MeetsThreshold;
         public int PresentStudents => attendance != null ? attendance.present : 0;
