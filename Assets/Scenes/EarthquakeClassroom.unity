@@ -132,6 +132,10 @@ PrefabInstance:
       value: locker
       objectReference: {fileID: 0}
     - target: {fileID: 1460140774133394, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460140774133394, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967291
       objectReference: {fileID: 0}
@@ -141,11 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925570476506582, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.010946572
+      value: 2.06
       objectReference: {fileID: 0}
     - target: {fileID: 4925570476506582, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.6
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 4925570476506582, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_LocalRotation.w
@@ -208,6 +212,85 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!1 &39629166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39629167}
+  - component: {fileID: 39629168}
+  - component: {fileID: 39629169}
+  m_Layer: 0
+  m_Name: TitleText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &39629167
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39629166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 862556661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -40}
+  m_SizeDelta: {x: 1200, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &39629168
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39629166}
+  m_CullTransparentMesh: 1
+--- !u!114 &39629169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39629166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 52
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &53325768
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +545,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 84883303}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 84883307}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &84883301 stripped
 Transform:
@@ -488,6 +574,136 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &84883307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84883302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &99261331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99261335}
+  - component: {fileID: 99261334}
+  - component: {fileID: 99261333}
+  - component: {fileID: 99261332}
+  m_Layer: 0
+  m_Name: SummaryPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &99261332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99261331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81c0f3de4814f949a65faecfe953347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.SummaryPanel
+  panel: {fileID: 862556660}
+  titleText: {fileID: 39629169}
+  scoreText: {fileID: 1404800652}
+  itemListText: {fileID: 753741410}
+  replayText: {fileID: 224894054}
+  distance: 2.5
+--- !u!114 &99261333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99261331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &99261334
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99261331}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &99261335
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99261331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0016, y: 0.0016, z: 0.0016}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 862556661}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1300, y: 900}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &128615817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -563,6 +779,10 @@ PrefabInstance:
       value: locker
       objectReference: {fileID: 0}
     - target: {fileID: 1460140774133394, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460140774133394, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967291
       objectReference: {fileID: 0}
@@ -572,7 +792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925570476506582, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.010946572
+      value: 1.84
       objectReference: {fileID: 0}
     - target: {fileID: 4925570476506582, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -640,6 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Tall Lockers
+  categoryId: locker
   severity: 2
   description: Tall, heavy lockers can topple over and block exits during strong
     shaking.
@@ -695,7 +916,7 @@ Transform:
   m_GameObject: {fileID: 186774938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 0, y: 1.28, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -762,6 +983,9 @@ MonoBehaviour:
   frequency: 14
   rotationAmplitude: 0
   subscribeToLessonManager: 1
+  onShakeComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &195927087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,6 +1048,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8612402415563494484, guid: 0577fdeb811a83a49887000239fb6ff5, type: 3}
   m_PrefabInstance: {fileID: 195927087}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &224894053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224894056}
+  - component: {fileID: 224894055}
+  - component: {fileID: 224894054}
+  m_Layer: 0
+  m_Name: ReplayText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &224894054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224894053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4, g: 0.85, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 32
+    m_FontStyle: 2
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 7
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &224894055
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224894053}
+  m_CullTransparentMesh: 1
+--- !u!224 &224894056
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224894053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 862556661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 1200, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &236635315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -887,6 +1190,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 236635318}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 236635322}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &236635316 stripped
 Transform:
@@ -913,6 +1219,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &236635322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236635317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &336073755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1003,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Storage Rack
+  categoryId: rack
   severity: 1
   description: Items stored up high on open racks can fall and hit you.
   recommendedAction: Keep heavy items low. Move away from shelves when shaking starts.
@@ -1093,6 +1426,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 342761927}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 342761931}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &342761925 stripped
 Transform:
@@ -1119,6 +1455,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &342761931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342761926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &435719343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1319,6 +1682,101 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511265744}
   m_CullTransparentMesh: 1
+--- !u!1 &516149272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516149273}
+  - component: {fileID: 516149276}
+  - component: {fileID: 516149275}
+  - component: {fileID: 516149274}
+  m_Layer: 0
+  m_Name: NotifText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &516149273
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516149272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1633289222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -32, y: -16}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &516149274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516149272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.8}
+  m_EffectDistance: {x: 1.5, y: -1.5}
+  m_UseGraphicAlpha: 1
+--- !u!114 &516149275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516149272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3, g: 1, b: 0.4, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 38
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: + Item
+--- !u!222 &516149276
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516149272}
+  m_CullTransparentMesh: 1
 --- !u!1 &518271054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1881,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 521710788}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521710792}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &521710786 stripped
 Transform:
@@ -1449,6 +1910,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &521710792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521710787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &535892067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +2238,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1403855206649478, guid: adb1204842363d949b4b739100f86523, type: 3}
       insertIndex: -1
       addedObject: {fileID: 570075773}
+    - targetCorrespondingSourceObject: {fileID: 1403855206649478, guid: adb1204842363d949b4b739100f86523, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 570075776}
   m_SourcePrefab: {fileID: 100100000, guid: adb1204842363d949b4b739100f86523, type: 3}
 --- !u!4 &570075771 stripped
 Transform:
@@ -1777,6 +2267,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &570075776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570075772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Whiteboard
+  categoryId: whiteboard
+  severity: 1
+  description: The whiteboard and its frame are wall-mounted and could shake loose.
+  recommendedAction: Stay clear of the front wall. Move toward the centre of the
+    room.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &615960099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1790,6 +2307,10 @@ PrefabInstance:
       value: locker
       objectReference: {fileID: 0}
     - target: {fileID: 1460140774133394, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460140774133394, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967291
       objectReference: {fileID: 0}
@@ -1799,7 +2320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925570476506582, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.010946572
+      value: 2.39
       objectReference: {fileID: 0}
     - target: {fileID: 4925570476506582, guid: c2eb0536a6bbfb94590dc4ae7eb803da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1956,6 +2477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Glass Display Cabinet
+  categoryId: showcase
   severity: 2
   description: Glass cabinets can shatter and scatter sharp shards across the floor.
   recommendedAction: Keep your distance from glass. Wear shoes and avoid the broken
@@ -2067,6 +2589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Exit Door
+  categoryId: exit_door
   severity: 0
   description: This is your evacuation route. Doorways can jam, so know where it
     is.
@@ -2144,6 +2667,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 707914790}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 707914794}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &707914788 stripped
 Transform:
@@ -2170,6 +2696,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &707914794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707914789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &737109273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2233,6 +2785,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 737109276}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 737109280}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &737109274 stripped
 Transform:
@@ -2259,6 +2814,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &737109280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737109275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &747324637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,6 +3015,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6125467769402437037, guid: 5b47e8ac1ce6c5c479313da4094e8caf, type: 3}
   m_PrefabInstance: {fileID: 748775038}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &753741407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753741408}
+  - component: {fileID: 753741409}
+  - component: {fileID: 753741410}
+  m_Layer: 0
+  m_Name: ItemListText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &753741408
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753741407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 862556661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -310}
+  m_SizeDelta: {x: 1200, y: 460}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &753741409
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753741407}
+  m_CullTransparentMesh: 1
+--- !u!114 &753741410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753741407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 26
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &814409863
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,6 +3234,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 823825658}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 823825662}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &823825656 stripped
 Transform:
@@ -2599,6 +3263,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &823825662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823825657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &829201066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,6 +3402,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829201066}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &862556660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 862556661}
+  - component: {fileID: 862556663}
+  - component: {fileID: 862556662}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &862556661
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862556660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 39629167}
+  - {fileID: 1404800650}
+  - {fileID: 753741408}
+  - {fileID: 224894056}
+  m_Father: {fileID: 99261335}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &862556662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862556660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.08, g: 0.09, b: 0.12, a: 0.97}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &862556663
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862556660}
+  m_CullTransparentMesh: 1
 --- !u!1 &895820985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,6 +3735,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 949205828}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 949205832}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &949205826 stripped
 Transform:
@@ -2991,6 +3764,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &949205832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949205827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &980643937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3054,6 +3853,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 980643940}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 980643944}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &980643938 stripped
 Transform:
@@ -3080,6 +3882,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &980643944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980643939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &989582330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,6 +3967,8 @@ MonoBehaviour:
   reticleScaleSpeed: 8
   reticleRestDistance: 6
   reticleAngularSize: 0.02
+  dwellDuration: 1.5
+  dwellReticleGrowth: 1.5
   enableEditorMouseLook: 1
   mouseLookSpeed: 0.12
 --- !u!114 &989582333
@@ -3357,6 +4187,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1007745436}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1007745440}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &1007745434 stripped
 Transform:
@@ -3383,6 +4216,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1007745440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007745435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1021581388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3570,6 +4429,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1044580812}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1044580816}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &1044580810 stripped
 Transform:
@@ -3596,6 +4458,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1044580816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044580811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1047055617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3652,6 +4540,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23092722267831418, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23092722267831418, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30b92673b9b7ef44c9c11a474d9910c9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3659,6 +4555,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1047055620}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1047055624}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1047055618 stripped
 Transform:
@@ -3685,6 +4584,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1047055624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047055619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1116447467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3748,6 +4674,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1116447470}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1116447474}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1116447468 stripped
 Transform:
@@ -3774,6 +4703,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1116447474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116447469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1118317375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3837,6 +4793,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1118317378}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1118317382}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &1118317376 stripped
 Transform:
@@ -3863,6 +4822,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1118317382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118317377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1183006845
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,6 +5058,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1213019027}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1213019031}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1213019025 stripped
 Transform:
@@ -4099,6 +5087,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1213019031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213019026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1281386846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4133,6 +5148,8 @@ RectTransform:
   - {fileID: 1737811191}
   - {fileID: 1003019099}
   - {fileID: 511265745}
+  - {fileID: 1633289222}
+  - {fileID: 2037631386}
   m_Father: {fileID: 989582331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4153,15 +5170,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.HazardHud
   counterText: {fileID: 1737811193}
+  notifPanel: {fileID: 1633289221}
+  notifText: {fileID: 516149275}
+  notifDuration: 2.2
   completionBanner: {fileID: 1003019098}
   completionText: {fileID: 68287960}
   drillWarningPanel: {fileID: 511265744}
   drillWarningText: {fileID: 1478987629}
+  coverPromptPanel: {fileID: 2037631385}
+  coverPromptText: {fileID: 1983110675}
   completionMessage: 'All hazards identified!
 
     Stay calm and remember: Drop,
     Cover, Hold On.'
   drillWarningMessage: "EARTHQUAKE!\nDROP  \u2022  COVER  \u2022  HOLD ON"
+  coverPromptMessage: 'FIND COVER!
+
+    Gaze at a sturdy desk'
+  coveredMessage: 'YOU''RE COVERED!
+
+    Hold on!'
 --- !u!114 &1281386849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4286,7 +5314,7 @@ MonoBehaviour:
   headerText: {fileID: 904765332}
   bodyText: {fileID: 2055746312}
   follow: {fileID: 989582331}
-  autoSubscribeAllHazards: 1
+  autoSubscribeAllItems: 0
   distance: 2.2
   verticalOffset: -0.15
   dangerColor: {r: 0.83, g: 0.18, b: 0.18, a: 1}
@@ -4422,6 +5450,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1373132543}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1373132547}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1373132541 stripped
 Transform:
@@ -4448,6 +5479,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1373132547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373132542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1389109431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4529,18 +5587,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.LessonManager
   attendance: {fileID: 1391059579}
-  autoRegisterSceneHazards: 1
+  autoRegisterSceneItems: 1
   autoStartDrillDelay: 3
-  onHazardFound:
+  onItemSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onNewCategoryFound:
     m_PersistentCalls:
       m_Calls: []
   onProgress:
     m_PersistentCalls:
       m_Calls: []
-  onAllHazardsFound:
+  onAllItemsFound:
     m_PersistentCalls:
       m_Calls: []
   onEarthquakeDrillStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onCoverTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  onGameFinished:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1391059579
@@ -4573,6 +5640,85 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1404800649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404800650}
+  - component: {fileID: 1404800651}
+  - component: {fileID: 1404800652}
+  m_Layer: 0
+  m_Name: ScoreText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1404800650
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404800649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 862556661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -150}
+  m_SizeDelta: {x: 1200, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1404800651
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404800649}
+  m_CullTransparentMesh: 1
+--- !u!114 &1404800652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404800649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.85, b: 0.3, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 34
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &1409979903
 GameObject:
   m_ObjectHideFlags: 0
@@ -4774,6 +5920,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1437428107}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1437428111}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1437428105 stripped
 Transform:
@@ -4800,6 +5949,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1437428111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437428106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1455545549
 GameObject:
   m_ObjectHideFlags: 0
@@ -4976,6 +6152,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1457476052}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1457476056}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &1457476050 stripped
 Transform:
@@ -5002,6 +6181,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1457476056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457476051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1478987626
 GameObject:
   m_ObjectHideFlags: 0
@@ -5081,7 +6286,7 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 46
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -5222,6 +6427,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1563121022}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1563121026}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1563121020 stripped
 Transform:
@@ -5248,6 +6456,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1563121026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563121021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1624745502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5304,6 +6539,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23092722267831418, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23092722267831418, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30b92673b9b7ef44c9c11a474d9910c9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5311,6 +6554,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1624745505}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1624745509}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1624745503 stripped
 Transform:
@@ -5337,6 +6583,109 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1624745509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624745504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1633289221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633289222}
+  - component: {fileID: 1633289224}
+  - component: {fileID: 1633289223}
+  m_Layer: 0
+  m_Name: NotifPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1633289222
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633289221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 516149273}
+  m_Father: {fileID: 1281386847}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 230}
+  m_SizeDelta: {x: 800, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1633289223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633289221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.1, g: 0.1, b: 0.1, a: 0.75}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1633289224
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633289221}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1668923209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5400,6 +6749,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1668923212}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1668923216}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1668923210 stripped
 Transform:
@@ -5426,6 +6778,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1668923216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668923211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1693401995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5519,6 +6898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Ceiling Projector
+  categoryId: projector
   severity: 2
   description: Ceiling-mounted equipment can shake loose and fall straight down.
   recommendedAction: Do not stand directly underneath. Get under a sturdy desk instead.
@@ -5657,6 +7037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Window
+  categoryId: window
   severity: 1
   description: Windows can crack and break, sending glass inward.
   recommendedAction: Stay back from windows. Move toward an interior wall.
@@ -5845,6 +7226,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1800225755}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1800225759}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1800225752 stripped
 Transform:
@@ -5869,6 +7253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Sturdy Desk
+  categoryId: sturdy_desk
   severity: 0
   description: A strong desk is the best shelter from falling objects.
   recommendedAction: 'DROP, COVER and HOLD ON: get under it and hold a leg until
@@ -5897,6 +7282,18 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1800225759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800225753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b725b44b64a472748871872827602141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.CoverSpot
 --- !u!1001 &1805628597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5960,6 +7357,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1805628600}
+    - targetCorrespondingSourceObject: {fileID: 1729782501303860, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1805628604}
   m_SourcePrefab: {fileID: 100100000, guid: 6d513e3e97508a3429bc5eac2b8b7145, type: 3}
 --- !u!4 &1805628598 stripped
 Transform:
@@ -5986,6 +7386,33 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1805628604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805628599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Student Desk
+  categoryId: student_desk
+  severity: 0
+  description: A sturdy student desk. During an earthquake this is your best overhead
+    shelter.
+  recommendedAction: "DROP, COVER, HOLD ON \u2014 get under it and grip a leg."
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1870150295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6049,6 +7476,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1870150298}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1870150302}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &1870150296 stripped
 Transform:
@@ -6075,6 +7505,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1870150302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870150297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1883942498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6200,6 +7656,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1429071196916812, guid: 006691b87ee6ce7429992a2a172ecf29, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1924130052}
+    - targetCorrespondingSourceObject: {fileID: 1429071196916812, guid: 006691b87ee6ce7429992a2a172ecf29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1924130056}
   m_SourcePrefab: {fileID: 100100000, guid: 006691b87ee6ce7429992a2a172ecf29, type: 3}
 --- !u!4 &1924130050 stripped
 Transform:
@@ -6226,6 +7685,129 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &1924130056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924130051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Teacher's Desk
+  categoryId: teacher_desk
+  severity: 0
+  description: The teacher's large desk is sturdy and can shelter several students.
+  recommendedAction: Get under it quickly and hold on until shaking stops.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1983110672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983110673}
+  - component: {fileID: 1983110676}
+  - component: {fileID: 1983110675}
+  - component: {fileID: 1983110674}
+  m_Layer: 0
+  m_Name: CoverPromptText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1983110673
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983110672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2037631386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -32, y: -20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1983110674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983110672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.8}
+  m_EffectDistance: {x: 1.5, y: -1.5}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1983110675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983110672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 36
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'FIND COVER!
+
+    Gaze at a sturdy desk'
+--- !u!222 &1983110676
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983110672}
+  m_CullTransparentMesh: 1
 --- !u!1001 &2011791262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6319,6 +7901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
   displayName: Wall Speaker
+  categoryId: speaker
   severity: 1
   description: Mounted speakers and fixtures can drop from the wall.
   recommendedAction: Avoid lingering directly below wall-mounted objects.
@@ -6367,6 +7950,82 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!1 &2037631385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037631386}
+  - component: {fileID: 2037631388}
+  - component: {fileID: 2037631387}
+  m_Layer: 0
+  m_Name: CoverPromptPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2037631386
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037631385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1983110673}
+  m_Father: {fileID: 1281386847}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -200}
+  m_SizeDelta: {x: 900, y: 160}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2037631387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037631385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9, g: 0.55, b: 0, a: 0.95}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2037631388
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037631385}
+  m_CullTransparentMesh: 1
 --- !u!1 &2055746311
 GameObject:
   m_ObjectHideFlags: 0
@@ -6509,6 +8168,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2063598169}
+    - targetCorrespondingSourceObject: {fileID: 1578530219999206, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2063598173}
   m_SourcePrefab: {fileID: 100100000, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
 --- !u!4 &2063598167 stripped
 Transform:
@@ -6535,6 +8197,32 @@ MonoBehaviour:
   positionAmplitude: 0.025
   rotationAmplitude: 1.2
   frequencyMultiplier: 1
+--- !u!114 &2063598173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063598168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834e19b7ada684342bc9944a24671aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GazeVR.GazeInteractable
+  displayName: Chair
+  categoryId: chair
+  severity: 1
+  description: Chairs can tip and slide during shaking. They give no overhead protection.
+  recommendedAction: Leave the chair and take cover under a nearby desk.
+  countsTowardLesson: 1
+  hoverScale: 1.08
+  pulseSpeed: 8
+  onFirstDiscovered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6547,3 +8235,4 @@ SceneRoots:
   - {fileID: 1183006846}
   - {fileID: 518271055}
   - {fileID: 1316176693}
+  - {fileID: 99261335}

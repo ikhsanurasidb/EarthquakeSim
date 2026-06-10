@@ -1,20 +1,31 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace GazeVR
 {
     /// <summary>
-    /// Heads-up display: shows hazard-found progress, a completion banner when all hazards are
-    /// identified, and an earthquake warning banner when the drill starts.
-    ///
-    /// Lives on a world-space canvas parented to the camera so it renders correctly in stereo VR.
+    /// Heads-up display camera overlay. Shows:
+    /// <list type="bullet">
+    ///   <item>A running count of discoveries (no total, to keep the player exploring).</item>
+    ///   <item>A brief "+1 [Name]" notification each time a new category is found.</item>
+    ///   <item>A green completion banner when all tracked items have been found.</item>
+    ///   <item>A red earthquake warning when the drill starts.</item>
+    ///   <item>A "FIND COVER!" prompt during the earthquake, replaced by "COVERED!" once taken.</item>
+    /// </list>
     /// </summary>
     public class HazardHud : MonoBehaviour
     {
-        [Header("Hazard counter")]
+        [Header("Discovery counter (no total shown)")]
         public Text counterText;
 
-        [Header("Completion banner (all hazards found)")]
+        [Header("New-discovery notification (+1 flash)")]
+        public GameObject notifPanel;
+        public Text notifText;
+        [Tooltip("Seconds the +1 notification stays visible.")]
+        public float notifDuration = 2.2f;
+
+        [Header("Completion banner (all items found)")]
         public GameObject completionBanner;
         public Text completionText;
 
@@ -22,32 +33,41 @@ namespace GazeVR
         public GameObject drillWarningPanel;
         public Text drillWarningText;
 
+        [Header("Cover prompt (during earthquake)")]
+        public GameObject coverPromptPanel;
+        public Text coverPromptText;
+
         [Header("Content")]
         [TextArea]
-        public string completionMessage =
-            "All hazards identified!\nGet ready — earthquake incoming!";
-
+        public string completionMessage = "All items found!\nGet ready — earthquake incoming!";
         [TextArea]
-        public string drillWarningMessage =
-            "EARTHQUAKE!\nDROP  •  COVER  •  HOLD ON";
+        public string drillWarningMessage = "EARTHQUAKE!\nDROP  \u2022  COVER  \u2022  HOLD ON";
+        public string coverPromptMessage = "FIND COVER!\nGaze at a sturdy desk";
+        public string coveredMessage = "YOU'RE COVERED!\nHold on!";
+
+        Coroutine _notifRoutine;
 
         void Start()
         {
-            if (completionBanner != null) completionBanner.SetActive(false);
-            if (drillWarningPanel != null) drillWarningPanel.SetActive(false);
+            SetActive(notifPanel, false);
+            SetActive(completionBanner, false);
+            SetActive(drillWarningPanel, false);
+            SetActive(coverPromptPanel, false);
 
             var lesson = LessonManager.Instance;
-            if (lesson != null)
+            if (lesson == null)
             {
-                lesson.onProgress.AddListener(OnProgress);
-                lesson.onAllHazardsFound.AddListener(OnAllFound);
-                lesson.onEarthquakeDrillStarted.AddListener(OnDrillStarted);
-                OnProgress(lesson.FoundHazards, lesson.TotalHazards);
+                if (counterText != null) counterText.text = "Discoveries: 0";
+                return;
             }
-            else if (counterText != null)
-            {
-                counterText.text = "Hazards found: 0/0";
-            }
+
+            lesson.onProgress.AddListener(OnProgress);
+            lesson.onNewCategoryFound.AddListener(OnNewCategoryFound);
+            lesson.onAllItemsFound.AddListener(OnAllFound);
+            lesson.onEarthquakeDrillStarted.AddListener(OnDrillStarted);
+            lesson.onCoverTaken.AddListener(OnCoverTaken);
+
+            OnProgress(lesson.FoundCategories, lesson.TotalCategories);
         }
 
         void OnDestroy()
@@ -55,29 +75,67 @@ namespace GazeVR
             var lesson = LessonManager.Instance;
             if (lesson == null) return;
             lesson.onProgress.RemoveListener(OnProgress);
-            lesson.onAllHazardsFound.RemoveListener(OnAllFound);
+            lesson.onNewCategoryFound.RemoveListener(OnNewCategoryFound);
+            lesson.onAllItemsFound.RemoveListener(OnAllFound);
             lesson.onEarthquakeDrillStarted.RemoveListener(OnDrillStarted);
+            lesson.onCoverTaken.RemoveListener(OnCoverTaken);
         }
+
+        // ── Event handlers ───────────────────────────────────────────────────
 
         void OnProgress(int found, int total)
         {
+            // Intentionally hide the total to keep the player curious.
             if (counterText != null)
-                counterText.text = $"Hazards found: {found}/{total}";
+                counterText.text = $"Discoveries: {found}";
+        }
+
+        void OnNewCategoryFound(GazeInteractable item)
+        {
+            ShowNotification($"+ {item.displayName}");
         }
 
         void OnAllFound()
         {
             if (completionText != null) completionText.text = completionMessage;
-            if (completionBanner != null) completionBanner.SetActive(true);
+            SetActive(completionBanner, true);
         }
 
         void OnDrillStarted()
         {
             if (drillWarningText != null) drillWarningText.text = drillWarningMessage;
-            if (drillWarningPanel != null) drillWarningPanel.SetActive(true);
+            SetActive(drillWarningPanel, true);
+            SetActive(completionBanner, false);
 
-            // The completion banner has done its job; swap it out for the warning.
-            if (completionBanner != null) completionBanner.SetActive(false);
+            if (coverPromptText != null) coverPromptText.text = coverPromptMessage;
+            SetActive(coverPromptPanel, true);
+        }
+
+        void OnCoverTaken()
+        {
+            if (coverPromptText != null) coverPromptText.text = coveredMessage;
+            // Keep the panel visible so the player knows they succeeded.
+        }
+
+        // ── Notification ─────────────────────────────────────────────────────
+
+        void ShowNotification(string text)
+        {
+            if (_notifRoutine != null) StopCoroutine(_notifRoutine);
+            if (notifText != null) notifText.text = text;
+            SetActive(notifPanel, true);
+            _notifRoutine = StartCoroutine(HideNotifAfter(notifDuration));
+        }
+
+        IEnumerator HideNotifAfter(float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            SetActive(notifPanel, false);
+        }
+
+        static void SetActive(GameObject go, bool active)
+        {
+            if (go != null) go.SetActive(active);
         }
     }
 }

@@ -1,49 +1,65 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 namespace GazeVR
 {
     /// <summary>
-    /// Casts a ray forward from the camera (the user's gaze) and drives gaze interaction:
-    /// it hovers <see cref="GazeInteractable"/> objects, dilates the reticle, and selects the
-    /// hovered object when the trigger is pressed.
+    /// Casts a ray from the camera's forward vector (the player's gaze) and drives gaze interaction.
     ///
-    /// On a Cardboard device the camera is rotated by the head tracker (a TrackedPoseDriver) and
-    /// the viewer button is read through <c>Google.XR.Cardboard.Api</c>. In the Editor — where there
-    /// is no headset — it falls back to right-mouse-drag look and mouse/space/touch for the trigger,
-    /// so the whole mechanic can be play-tested without a phone.
+    /// <para><b>Selection modes:</b>
+    /// <list type="bullet">
+    ///   <item><b>VR device active</b> — <em>dwell selection</em>: gaze at an object for
+    ///   <see cref="dwellDuration"/> seconds to select it. The reticle fills as a progress indicator.</item>
+    ///   <item><b>Editor / desktop</b> — <em>trigger selection</em>: left-click, Space, or screen-tap.
+    ///   Right-mouse-drag provides free-look for playtesting without a headset.</item>
+    /// </list>
+    /// </para>
     /// </summary>
     [RequireComponent(typeof(Camera))]
     public class GazePointer : MonoBehaviour
     {
         [Header("Gaze ray")]
-        [Tooltip("Maximum gaze distance in meters (Cardboard convention is 20 m).")]
+        [Tooltip("Maximum gaze distance in metres (Cardboard convention: 20 m).")]
         public float maxDistance = 20f;
 
-        [Tooltip("Layers the gaze ray can hit. Walls should be included so they block the gaze.")]
+        [Tooltip("Layers the gaze ray can hit. Include walls so they block the gaze.")]
         public LayerMask raycastMask = ~0;
 
         [Header("Reticle (child of the camera)")]
-        [Tooltip("The reticle dot transform. It is moved to the gazed surface and dilates on hover.")]
+        [Tooltip("The reticle dot transform. Moved to the gazed surface; dilates on hover.")]
         public Transform reticle;
         public float reticleRestScale = 1f;
         public float reticleHoverScale = 1.8f;
         public float reticleScaleSpeed = 8f;
-        [Tooltip("Distance at which to park the reticle when nothing is being gazed at.")]
+        [Tooltip("Distance at which to park the reticle when nothing is gazed at.")]
         public float reticleRestDistance = 6f;
-        [Tooltip("Angular size factor – the reticle scales with distance to stay roughly constant on screen.")]
+        [Tooltip("Angular-size factor — keeps the reticle roughly constant on screen.")]
         public float reticleAngularSize = 0.02f;
 
+        [Header("Dwell selection (VR)")]
+        [Tooltip("Seconds to keep the gaze on an object to select it (VR / device mode only).")]
+        public float dwellDuration = 1.5f;
+        [Tooltip("The reticle grows up to this multiplier of reticleHoverScale during dwell.")]
+        public float dwellReticleGrowth = 1.5f;
+
         [Header("Editor / desktop testing")]
-        [Tooltip("Allow right-mouse-drag to look around when no headset is active (Editor & desktop).")]
+        [Tooltip("Allow right-mouse-drag to look around when no headset is active.")]
         public bool enableEditorMouseLook = true;
         public float mouseLookSpeed = 0.12f;
+
+        // ── Runtime ─────────────────────────────────────────────────────────
 
         /// <summary>The interactable currently under the gaze, or null.</summary>
         public GazeInteractable Current { get; private set; }
 
+        /// <summary>Dwell progress towards the next selection (0 = none, 1 = complete).</summary>
+        public float DwellProgress { get; private set; }
+
         float _reticleScale;
         float _pitch, _yaw;
+        GazeInteractable _dwellTarget;
+        float _dwellTimer;
 
         void Awake()
         {
@@ -57,6 +73,7 @@ namespace GazeVR
         {
             MaybeMouseLook();
 
+            // ── Raycast ──────────────────────────────────────────────────────
             GazeInteractable hovered = null;
             float surfaceDistance = reticleRestDistance;
 
@@ -67,18 +84,59 @@ namespace GazeVR
                 hovered = hit.collider.GetComponentInParent<GazeInteractable>();
             }
 
-            // Hover transitions.
+            // ── Hover transitions ────────────────────────────────────────────
             if (hovered != Current)
             {
                 if (Current != null) Current.OnPointerExit();
                 Current = hovered;
                 if (Current != null) Current.OnPointerEnter();
+
+                // Reset dwell whenever gaze moves to a different target.
+                _dwellTarget = null;
+                _dwellTimer = 0f;
+                DwellProgress = 0f;
             }
 
-            // Selection.
-            if (Current != null && TriggerPressedThisFrame())
+            // ── Selection ────────────────────────────────────────────────────
+            if (XRSettings.isDeviceActive)
             {
-                Current.OnPointerClick();
+                // VR mode: dwell selection
+                if (hovered != null)
+                {
+                    if (hovered == _dwellTarget)
+                    {
+                        _dwellTimer += Time.unscaledDeltaTime;
+                        DwellProgress = Mathf.Clamp01(_dwellTimer / dwellDuration);
+
+                        if (_dwellTimer >= dwellDuration)
+                        {
+                            hovered.OnPointerClick();
+                            // Require looking away and back before triggering again.
+                            _dwellTarget = null;
+                            _dwellTimer = 0f;
+                            DwellProgress = 0f;
+                        }
+                    }
+                    else
+                    {
+                        _dwellTarget = hovered;
+                        _dwellTimer = 0f;
+                        DwellProgress = 0f;
+                    }
+                }
+                else
+                {
+                    _dwellTarget = null;
+                    _dwellTimer = 0f;
+                    DwellProgress = 0f;
+                }
+            }
+            else
+            {
+                // Editor / desktop mode: trigger-press selection
+                DwellProgress = 0f;
+                if (Current != null && TriggerPressedThisFrame())
+                    Current.OnPointerClick();
             }
 
             UpdateReticle(surfaceDistance, hovered != null);
@@ -88,7 +146,13 @@ namespace GazeVR
         {
             if (reticle == null) return;
 
-            float target = interactive ? reticleHoverScale : reticleRestScale;
+            float target;
+            if (DwellProgress > 0f)
+                // Reticle grows as dwell progresses, giving the player clear VR feedback.
+                target = Mathf.Lerp(reticleHoverScale, reticleHoverScale * dwellReticleGrowth, DwellProgress);
+            else
+                target = interactive ? reticleHoverScale : reticleRestScale;
+
             _reticleScale = Mathf.Lerp(_reticleScale, target, Time.unscaledDeltaTime * reticleScaleSpeed);
 
             float d = Mathf.Clamp(distance, 0.5f, maxDistance);
@@ -99,15 +163,7 @@ namespace GazeVR
         bool TriggerPressedThisFrame()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            // The Cardboard viewer button (and a screen tap) come through the Cardboard API.
-            try
-            {
-                if (Google.XR.Cardboard.Api.IsTriggerPressed) return true;
-            }
-            catch
-            {
-                // XR session not ready yet – ignore and fall through to the standard input checks.
-            }
+            try { if (Google.XR.Cardboard.Api.IsTriggerPressed) return true; } catch { }
 #endif
             Mouse mouse = Mouse.current;
             if (mouse != null && mouse.leftButton.wasPressedThisFrame) return true;
@@ -124,10 +180,10 @@ namespace GazeVR
         void MaybeMouseLook()
         {
             if (!enableEditorMouseLook) return;
-            if (UnityEngine.XR.XRSettings.isDeviceActive) return; // a headset is driving the view
+            if (XRSettings.isDeviceActive) return;
 
             Mouse mouse = Mouse.current;
-            if (mouse == null || !mouse.rightButton.isPressed) return; // hold RMB to look around
+            if (mouse == null || !mouse.rightButton.isPressed) return;
 
             Vector2 delta = mouse.delta.ReadValue();
             _yaw += delta.x * mouseLookSpeed;

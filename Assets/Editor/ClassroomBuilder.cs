@@ -131,7 +131,7 @@ namespace GazeVR.EditorTools
 
             var lesson = go.AddComponent<LessonManager>();
             lesson.attendance = attendance;
-            lesson.autoRegisterSceneHazards = true;
+            lesson.autoRegisterSceneItems = true;
 
             go.AddComponent<CardboardStartup>();
             return lesson;
@@ -338,7 +338,7 @@ namespace GazeVR.EditorTools
             var locker1 = Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 1.0f), 90f);
             var locker2 = Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 2.6f), 90f);
             var locker = Place(Props + "locker.prefab", root, new Vector3(-8.4f, 0, 4.2f), 90f);
-            MakeHazard(locker, "Tall Lockers", HazardSeverity.Danger,
+            MakeHazard(locker, "Tall Lockers", ItemSeverity.Danger,
                 "Tall, heavy lockers can topple over and block exits during strong shaking.",
                 "Stay clear of tall furniture. Never stand or shelter right beside it.");
             if (locker1 != null) locker1.AddComponent<ShakeableObject>();
@@ -347,48 +347,48 @@ namespace GazeVR.EditorTools
 
             // Bookshelf / storage rack along the right wall – falling objects.
             var rack = Place(Props + "rack.prefab", root, new Vector3(8.3f, 0, 3.5f), -90f);
-            MakeHazard(rack, "Storage Rack", HazardSeverity.Caution,
+            MakeHazard(rack, "Storage Rack", ItemSeverity.Caution,
                 "Items stored up high on open racks can fall and hit you.",
                 "Keep heavy items low. Move away from shelves when shaking starts.");
             if (rack != null) rack.AddComponent<ShakeableObject>();
 
             // Glass display cabinet – broken glass.
             var showcase = Place(Props + "showcase.prefab", root, new Vector3(8.3f, 0, -1.0f), -90f);
-            MakeHazard(showcase, "Glass Display Cabinet", HazardSeverity.Danger,
+            MakeHazard(showcase, "Glass Display Cabinet", ItemSeverity.Danger,
                 "Glass cabinets can shatter and scatter sharp shards across the floor.",
                 "Keep your distance from glass. Wear shoes and avoid the broken area afterwards.");
             if (showcase != null) showcase.AddComponent<ShakeableObject>();
 
             // Window blinds – glass hazard (wall-mounted).
             var window = Place(Props + "jalousie.prefab", root, new Vector3(-8.8f, 1.7f, -2.5f), 90f, ground: false);
-            MakeHazard(window, "Window", HazardSeverity.Caution,
+            MakeHazard(window, "Window", ItemSeverity.Caution,
                 "Windows can crack and break, sending glass inward.",
                 "Stay back from windows. Move toward an interior wall.");
 
             // Ceiling projector – falling fixture.
             var projector = Place(Props + "projector.prefab", root, new Vector3(0f, H - 0.35f, 0f), 0f, ground: false);
-            MakeHazard(projector, "Ceiling Projector", HazardSeverity.Danger,
+            MakeHazard(projector, "Ceiling Projector", ItemSeverity.Danger,
                 "Ceiling-mounted equipment can shake loose and fall straight down.",
                 "Do not stand directly underneath. Get under a sturdy desk instead.");
             if (projector != null) projector.AddComponent<ShakeableObject>();
 
             // Wall speaker – caution.
             var speaker = Place(Props + "speaker.prefab", root, new Vector3(-8.7f, 2.8f, 5.5f), 90f, ground: false);
-            MakeHazard(speaker, "Wall Speaker", HazardSeverity.Caution,
+            MakeHazard(speaker, "Wall Speaker", ItemSeverity.Caution,
                 "Mounted speakers and fixtures can drop from the wall.",
                 "Avoid lingering directly below wall-mounted objects.");
             if (speaker != null) speaker.AddComponent<ShakeableObject>();
 
             // Exit door – safe evacuation route.
             var door = Place(Props + "a door.prefab", root, new Vector3(6f, 0, -D / 2f + 0.2f), 0f);
-            MakeHazard(door, "Exit Door", HazardSeverity.Safe,
+            MakeHazard(door, "Exit Door", ItemSeverity.Safe,
                 "This is your evacuation route. Doorways can jam, so know where it is.",
                 "Do NOT run during shaking. Calmly evacuate through here once it stops.");
 
             // A sturdy student desk – the safe Drop-Cover-Hold spot, right in front of the player.
             var safeDesk = Place(Props + "table2.prefab", root, new Vector3(0f, 0, -4.4f), 0f);
             if (safeDesk != null) safeDesk.name = "SturdyDesk";
-            MakeHazard(safeDesk, "Sturdy Desk", HazardSeverity.Safe,
+            MakeHazard(safeDesk, "Sturdy Desk", ItemSeverity.Safe,
                 "A strong desk is the best shelter from falling objects.",
                 "DROP, COVER and HOLD ON: get under it and hold a leg until shaking stops.");
             if (safeDesk != null) safeDesk.AddComponent<ShakeableObject>();
@@ -415,7 +415,7 @@ namespace GazeVR.EditorTools
             return go;
         }
 
-        static GazeInteractable MakeHazard(GameObject go, string name, HazardSeverity severity,
+        static GazeInteractable MakeHazard(GameObject go, string name, ItemSeverity severity,
                                            string description, string action)
         {
             if (go == null) return null;

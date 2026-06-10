@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GazeVR
 {
@@ -10,8 +11,8 @@ namespace GazeVR
     /// rotation, and the shake is felt as pure floor-vibration — realistic and comfortable in
     /// both 3-DOF Cardboard VR and flat-screen play.
     ///
-    /// Call <see cref="Play"/> directly, or let <see cref="subscribeToLessonManager"/> wire it
-    /// automatically to <see cref="LessonManager.onEarthquakeDrillStarted"/>.
+    /// When the shake completes naturally, <see cref="onShakeComplete"/> is fired so
+    /// <see cref="LessonManager"/> can transition to the Summary phase.
     /// </summary>
     public class EarthquakeShaker : MonoBehaviour
     {
@@ -50,6 +51,10 @@ namespace GazeVR
         [Tooltip("When true, subscribes to LessonManager.onEarthquakeDrillStarted on Start.")]
         public bool subscribeToLessonManager = true;
 
+        [Header("Events")]
+        [Tooltip("Fired when the shake sequence completes naturally (not when Stop is called manually).")]
+        public UnityEvent onShakeComplete = new UnityEvent();
+
         // ── Runtime ─────────────────────────────────────────────────────────
 
         /// <summary>True while a shake sequence is running.</summary>
@@ -68,7 +73,6 @@ namespace GazeVR
         void Awake()
         {
             Current = this;
-            // Per-instance random noise seeds so every run feels different.
             _seedX = Random.Range(0f, 512f);
             _seedY = Random.Range(0f, 512f);
             _seedPitch = Random.Range(0f, 512f);
@@ -93,7 +97,7 @@ namespace GazeVR
             _elapsed += Time.unscaledDeltaTime;
             if (_elapsed >= duration)
             {
-                Stop();
+                StopInternal(natural: true);
                 return;
             }
 
@@ -125,13 +129,17 @@ namespace GazeVR
             IsShaking = true;
         }
 
-        /// <summary>Stops the shake immediately and restores the transform to its resting state.</summary>
-        public void Stop()
+        /// <summary>Stops the shake immediately (does NOT fire <see cref="onShakeComplete"/>).</summary>
+        public void Stop() => StopInternal(natural: false);
+
+        void StopInternal(bool natural)
         {
             IsShaking = false;
             Intensity = 0f;
             transform.localPosition = _originLocalPos;
             transform.localRotation = _originLocalRot;
+
+            if (natural) onShakeComplete.Invoke();
         }
     }
 }
